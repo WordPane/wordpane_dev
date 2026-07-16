@@ -1,0 +1,45 @@
+---
+const faqs = [
+  {
+    q: 'Quanto tempo leva para meu site ficar pronto?',
+    a: 'Projetos institucionais costumam levar de 2 a 4 semanas, dependendo da complexidade e da velocidade de aprovação do conteúdo. O prazo exato é definido na proposta.',
+  },
+  {
+    q: 'Preciso pagar mensalidade para a WordPane?',
+    a: 'Não. Após a entrega, os únicos custos recorrentes são domínio e hospedagem, que têm valores baixos. Planos de suporte contínuo são opcionais.',
+  },
+  {
+    q: 'Vou conseguir atualizar o conteúdo do site?',
+    a: 'Sim. Entregamos o site com uma estrutura simples de atualizar e oferecemos treinamento para você e sua equipe.',
+  },
+  {
+    q: 'Já tenho um site em WordPress. E agora?',
+    a: 'Cuidamos de toda a migração: conteúdo, endereços e redirecionamentos, sem perder posições no Google nem visitantes no caminho.',
+  },
+  {
+    q: 'Meu site vai aparecer no Google?',
+    a: 'Todo projeto sai com SEO técnico completo: velocidade, estrutura, títulos e descrições otimizados. O ranqueamento orgânico também depende de conteúdo e concorrência, mas seu site nasce com vantagem.',
+  },
+  {
+    q: 'Quanto custa um site profissional?',
+    a: 'O investimento varia conforme o escopo: quantidade de páginas, funcionalidades e integrações. Solicite uma proposta gratuita e receba um orçamento detalhado para o seu caso.',
+  },
+];
+---
+
+<section id="faq">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Dúvidas frequentes</span>
+      <h2>Perguntas e <span class="gradient-text">respostas</span></h2>
+    </div>
+    <div class="faq-list">
+      {faqs.map((faq) => (
+        <details data-reveal>
+          <summary>{faq.q}</summary>
+          <p>{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

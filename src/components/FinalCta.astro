@@ -1,0 +1,22 @@
+---
+import { WHATSAPP_LINK, EMAIL } from '../config';
+---
+
+<section class="final-cta">
+  <div class="container">
+    <div class="panel" data-reveal>
+      <h2>Pronto para ter um site que realmente vende?</h2>
+      <p>
+        Solicite agora uma proposta gratuita e descubra como um site rápido,
+        seguro e bem posicionado pode transformar seus resultados.
+      </p>
+      <a class="btn" href={WHATSAPP_LINK} target="_blank" rel="noopener">
+        Chamar no WhatsApp
+      </a>
+      <br />
+      <a class="alt-contact" href={`mailto:${EMAIL}`}>
+        ou escreva para {EMAIL}
+      </a>
+    </div>
+  </div>
+</section>

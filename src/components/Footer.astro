@@ -1,0 +1,39 @@
+---
+import { WHATSAPP_LINK, EMAIL, SITE_NAME } from '../config';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/brand/logo-white.png" alt="WordPane" width="140" height="28" />
+        <p>Sites profissionais de alta performance, feitos para converter.</p>
+      </div>
+      <div class="footer-nav">
+        <div>
+          <strong>Navegação</strong>
+          <ul>
+            <li><a href="#beneficios">Benefícios</a></li>
+            <li><a href="#comparativo">Comparativo</a></li>
+            <li><a href="#processo">Processo</a></li>
+            <li><a href="#faq">Dúvidas</a></li>
+          </ul>
+        </div>
+        <div>
+          <strong>Contato</strong>
+          <ul>
+            <li>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener">WhatsApp</a>
+            </li>
+            <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© {year} {SITE_NAME}. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
