@@ -1,46 +1,62 @@
+---
+import { WHATSAPP_LINK } from '../config';
+
+const steps = [
+  {
+    num: '01',
+    title: 'Briefing e estratégia',
+    desc: 'Uma conversa rápida para entender seu negócio, seu público e seus objetivos. Saímos dela com a estrutura ideal do seu site.',
+    chip: 'Reunião rápida online',
+  },
+  {
+    num: '02',
+    title: 'Design exclusivo',
+    desc: 'Criamos um layout sob medida para a sua marca — e você aprova cada detalhe antes de qualquer linha de código.',
+    chip: 'Você aprova antes de seguir',
+  },
+  {
+    num: '03',
+    title: 'Desenvolvimento',
+    desc: 'Construímos o site com a tecnologia mais moderna do mercado e testamos em celular, tablet e computador.',
+    chip: 'Testado em todos os dispositivos',
+  },
+  {
+    num: '04',
+    title: 'Lançamento e evolução',
+    desc: 'Seu site no ar com tudo configurado, e 30 dias de suporte dedicado para ajustes e dúvidas.',
+    chip: '30 dias de suporte incluso',
+  },
+];
+---
+
 <section id="processo">
   <div class="container">
     <div class="section-head" data-reveal>
       <span class="eyebrow">Como funciona</span>
-      <h2>Do briefing ao lançamento em <span class="gradient-text">4 passos</span></h2>
+      <h2>Do primeiro contato ao site no ar em <span class="gradient-text">até 3 dias úteis</span></h2>
       <p>
-        Um processo claro e transparente, com prazos definidos e acompanhamento
-        em todas as etapas.
+        Um processo simples e transparente: você acompanha cada etapa e aprova
+        antes de seguirmos para a próxima.
       </p>
     </div>
-    <div class="steps">
-      <article class="step" data-reveal>
-        <span class="step-number">01</span>
-        <h3>Briefing e estratégia</h3>
-        <p>
-          Entendemos seu negócio, seu público e seus objetivos para definir a
-          estrutura ideal do site.
-        </p>
-      </article>
-      <article class="step" data-reveal>
-        <span class="step-number">02</span>
-        <h3>Design exclusivo</h3>
-        <p>
-          Criamos um layout sob medida para a sua marca, focado em gerar
-          contatos e vendas.
-        </p>
-      </article>
-      <article class="step" data-reveal>
-        <span class="step-number">03</span>
-        <h3>Desenvolvimento</h3>
-        <p>
-          Construímos o site com a tecnologia mais moderna do mercado, testado
-          em todos os dispositivos.
-        </p>
-      </article>
-      <article class="step" data-reveal>
-        <span class="step-number">04</span>
-        <h3>Lançamento e evolução</h3>
-        <p>
-          Publicamos, configuramos tudo e acompanhamos os resultados para
-          evoluir continuamente.
-        </p>
-      </article>
+
+    <ol class="steps">
+      {steps.map((step) => (
+        <li class="step" data-reveal>
+          <span class="step-node">{step.num}</span>
+          <div class="step-body">
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+            <span class="step-chip">{step.chip}</span>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <div class="process-cta" data-reveal>
+      <a class="btn btn-primary" href={WHATSAPP_LINK} target="_blank" rel="noopener">
+        Iniciar meu projeto agora
+      </a>
     </div>
   </div>
 </section>

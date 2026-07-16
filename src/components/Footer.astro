@@ -31,26 +31,19 @@ const pagespeedUrl = `https://pagespeed.web.dev/analysis?url=${SITE_URL}`;
         <Image src={logoWhite} alt="WordPane" width={440} format="webp" />
         <p>Sites profissionais de alta performance, feitos para converter.</p>
         <p>Atendemos clientes em todo o Brasil.</p>
+        <a class="footer-badge" href={pagespeedUrl} target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+          Este site é nossa vitrine: teste nossa velocidade
+        </a>
       </div>
       <nav class="footer-nav" aria-label="Rodapé">
         <div>
           <strong>Navegação</strong>
           <ul>
             <li><a href="#beneficios">Benefícios</a></li>
-            <li><a href="#tecnologia">Tecnologia</a></li>
             <li><a href="#comparativo">Comparativo</a></li>
             <li><a href="#processo">Processo</a></li>
             <li><a href="#faq">Dúvidas</a></li>
-          </ul>
-        </div>
-        <div>
-          <strong>Serviços</strong>
-          <ul>
-            <li><span>Criação de sites</span></li>
-            <li><span>Landing pages</span></li>
-            <li><span>Lojas virtuais</span></li>
-            <li><span>Migração de WordPress</span></li>
-            <li><span>Otimização de desempenho</span></li>
           </ul>
         </div>
         <div>
@@ -61,6 +54,7 @@ const pagespeedUrl = `https://pagespeed.web.dev/analysis?url=${SITE_URL}`;
             </li>
             <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
             <li><span>Seg. a sex., 9h às 18h</span></li>
+            <li><span>Resposta em até 1 dia útil</span></li>
           </ul>
         </div>
       </nav>
@@ -68,10 +62,6 @@ const pagespeedUrl = `https://pagespeed.web.dev/analysis?url=${SITE_URL}`;
 
     <div class="footer-bottom">
       <p>© {year} {SITE_NAME}. Todos os direitos reservados.</p>
-      <p class="footer-demo">
-        Este site é a nossa vitrine —
-        <a href={pagespeedUrl} target="_blank" rel="noopener">teste nossa velocidade no PageSpeed</a>.
-      </p>
     </div>
   </div>
 </footer>
