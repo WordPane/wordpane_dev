@@ -1,11 +1,13 @@
 ---
+import { Image } from 'astro:assets';
+import logoWhite from '../assets/brand/logo-white.png';
 import { WHATSAPP_LINK } from '../config';
 ---
 
 <header class="site-header">
   <div class="container">
     <a class="brand" href="/" aria-label="WordPane — voltar ao início">
-      <img src="/brand/logo-white.png" alt="WordPane" width="150" height="30" />
+      <Image src={logoWhite} alt="WordPane" width={500} format="webp" loading="eager" />
     </a>
     <nav class="main-nav" aria-label="Navegação principal">
       <a href="#beneficios">Benefícios</a>
@@ -19,3 +21,10 @@ import { WHATSAPP_LINK } from '../config';
     </a>
   </div>
 </header>
+
+<script>
+  const header = document.querySelector('.site-header');
+  const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 12);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>

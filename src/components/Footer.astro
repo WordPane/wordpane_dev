@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import logoWhite from '../assets/brand/logo-white.png';
 import { WHATSAPP_LINK, EMAIL, SITE_NAME } from '../config';
 
 const year = new Date().getFullYear();
@@ -8,7 +10,7 @@ const year = new Date().getFullYear();
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="/brand/logo-white.png" alt="WordPane" width="140" height="28" />
+        <Image src={logoWhite} alt="WordPane" width={440} format="webp" />
         <p>Sites profissionais de alta performance, feitos para converter.</p>
       </div>
       <div class="footer-nav">

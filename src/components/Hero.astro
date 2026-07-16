@@ -20,6 +20,10 @@ import { WHATSAPP_LINK } from '../config';
         </a>
         <a class="btn btn-outline" href="#comparativo">Ver comparativo</a>
       </div>
+      <p class="hero-note">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+        Resposta em até 1 dia útil · Sem compromisso · Sem mensalidade
+      </p>
       <ul class="hero-proof">
         <li>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
@@ -88,3 +92,36 @@ import { WHATSAPP_LINK } from '../config';
     </div>
   </div>
 </section>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rings = document.querySelectorAll<HTMLElement>('.score-ring');
+
+  if (rings.length && !reduceMotion) {
+    const DURATION = 1300;
+
+    const animateRing = (ring: HTMLElement, delay: number) => {
+      const num = ring.querySelector('strong');
+      window.setTimeout(() => {
+        const start = performance.now();
+        const tick = (now: number) => {
+          const progress = Math.min((now - start) / DURATION, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(eased * 100);
+          ring.style.background = `conic-gradient(var(--green) ${value}%, rgba(255, 255, 255, 0.08) ${value}%)`;
+          if (num) num.textContent = String(value);
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }, delay);
+    };
+
+    rings.forEach((ring, i) => {
+      ring.style.background =
+        'conic-gradient(var(--green) 0%, rgba(255, 255, 255, 0.08) 0%)';
+      const num = ring.querySelector('strong');
+      if (num) num.textContent = '0';
+      animateRing(ring, 300 + i * 180);
+    });
+  }
+</script>

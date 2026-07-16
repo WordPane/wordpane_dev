@@ -190,6 +190,14 @@ h3 {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(7, 25, 40, 0.96);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 .site-header .container {
@@ -277,6 +285,20 @@ h3 {
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 2.25rem;
+}
+
+.hero-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+  font-size: 0.88rem;
+  color: var(--text-faint);
+}
+
+.hero-note svg {
+  color: var(--green);
+  flex-shrink: 0;
 }
 
 .hero-proof {
@@ -418,6 +440,7 @@ h3 {
   font-weight: 600;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
   white-space: nowrap;
+  animation: floaty 5s ease-in-out infinite;
 }
 
 .float-chip svg {
@@ -433,6 +456,17 @@ h3 {
 .chip-2 {
   bottom: -1.2rem;
   left: -1rem;
+  animation-delay: 2.5s;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @media (max-width: 60rem) {
@@ -563,6 +597,19 @@ h3 {
 
 .compare-table tbody tr:hover {
   background: rgba(255, 255, 255, 0.02);
+}
+
+.compare-table thead th.col-wp,
+.compare-table tbody td:last-child {
+  background: rgba(0, 209, 100, 0.07);
+}
+
+.compare-table thead th.col-wp {
+  box-shadow: inset 0 2px 0 var(--green);
+}
+
+.compare-table tbody tr:last-child td:last-child {
+  box-shadow: inset 0 -2px 0 var(--green);
 }
 
 .compare-table td:first-child {
@@ -998,6 +1045,49 @@ h3 {
   font-size: 0.85rem;
 }
 
+/* ---------- Botão flutuante WhatsApp ---------- */
+
+.whatsapp-float {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: var(--navy);
+  box-shadow: 0 10px 30px rgba(0, 209, 100, 0.45);
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+}
+
+.whatsapp-float::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 209, 100, 0.55);
+  animation: pulse 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
 /* ---------- Animação de entrada ---------- */
 
 [data-reveal] {
@@ -1021,5 +1111,10 @@ h3 {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .float-chip,
+  .whatsapp-float,
+  .whatsapp-float::after {
+    animation: none;
   }
 }
