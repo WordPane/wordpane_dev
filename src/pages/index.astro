@@ -11,11 +11,26 @@ import Included from '../components/Included.astro';
 import Faq from '../components/Faq.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import { faqs } from '../data/faqs';
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a,
+    },
+  })),
+};
 ---
 
 <Base
   title="WordPane — Criação de Sites Profissionais de Alta Performance"
-  description="Desenvolvemos sites ultrarrápidos, seguros e otimizados para o Google, feitos para converter visitantes em clientes. Veja o comparativo com WordPress e solicite uma proposta gratuita."
+  description="Criamos sites profissionais ultrarrápidos, seguros e otimizados para o Google. Veja o comparativo com WordPress e peça uma proposta gratuita."
+  jsonLdExtra={[faqLd]}
 >
   <Header />
   <main>

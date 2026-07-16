@@ -1,13 +1,14 @@
 ---
-import { SITE_NAME, SITE_URL, EMAIL } from '../config';
+import { SITE_NAME, SITE_URL, EMAIL, WHATSAPP_NUMBER } from '../config';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description: string;
+  jsonLdExtra?: Record<string, unknown>[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, jsonLdExtra = [] } = Astro.props;
 const canonical = new URL(Astro.url.pathname, SITE_URL).href;
 
 const jsonLd = {
@@ -16,6 +17,9 @@ const jsonLd = {
   name: SITE_NAME,
   url: SITE_URL,
   email: EMAIL,
+  telephone: `+${WHATSAPP_NUMBER}`,
+  logo: `${SITE_URL}/favicon.png`,
+  image: `${SITE_URL}/og.png`,
   description,
   areaServed: 'BR',
   priceRange: '$$',
@@ -55,6 +59,9 @@ const jsonLd = {
     <meta name="twitter:image" content={`${SITE_URL}/og.png`} />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {jsonLdExtra.map((ld) => (
+      <script type="application/ld+json" set:html={JSON.stringify(ld)} />
+    ))}
   </head>
   <body>
     <slot />

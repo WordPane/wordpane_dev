@@ -10,20 +10,14 @@ const pagespeedUrl = `https://pagespeed.web.dev/analysis?url=${SITE_URL}`;
 <footer class="site-footer">
   <div class="container">
     <div class="footer-guarantee" data-reveal>
-      <div class="seal">
-        <img src="/brand/symbol.png" alt="" aria-hidden="true" width="56" height="32" />
-        <div>
-          <strong>Garantia de performance WordPane</strong>
-          <p>
-            Todo site que entregamos sai com nota 90+ no Google PageSpeed e
-            carregamento abaixo de 1 segundo. Se o seu não atingir, refazemos
-            a otimização sem custo adicional.
-          </p>
-        </div>
+      <div>
+        <strong>Garantia de performance WordPane</strong>
+        <p>
+          Todo site que entregamos sai com nota 90+ no Google PageSpeed e
+          carregamento abaixo de 1 segundo. Se o seu não atingir, refazemos
+          a otimização sem custo adicional.
+        </p>
       </div>
-      <a class="btn btn-primary" href={WHATSAPP_LINK} target="_blank" rel="noopener">
-        Quero esse padrão no meu site
-      </a>
     </div>
 
     <div class="footer-grid">
@@ -31,7 +25,7 @@ const pagespeedUrl = `https://pagespeed.web.dev/analysis?url=${SITE_URL}`;
         <Image src={logoWhite} alt="WordPane" width={440} format="webp" />
         <p>Sites profissionais de alta performance, feitos para converter.</p>
         <p>Atendemos clientes em todo o Brasil.</p>
-        <a class="footer-badge" href={pagespeedUrl} target="_blank" rel="noopener">
+        <a class="footer-badge" id="pagespeed-badge" href={pagespeedUrl} target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
           Este site é nossa vitrine: teste nossa velocidade
         </a>
@@ -54,7 +48,7 @@ const pagespeedUrl = `https://pagespeed.web.dev/analysis?url=${SITE_URL}`;
             </li>
             <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
             <li><span>Seg. a sex., 9h às 18h</span></li>
-            <li><span>Resposta em até 1 dia útil</span></li>
+            <li><span>Resposta em poucos minutos</span></li>
           </ul>
         </div>
       </nav>
@@ -65,3 +59,13 @@ const pagespeedUrl = `https://pagespeed.web.dev/analysis?url=${SITE_URL}`;
     </div>
   </div>
 </footer>
+
+<script>
+  const pagespeedBadge = document.getElementById('pagespeed-badge');
+  if (pagespeedBadge) {
+    pagespeedBadge.setAttribute(
+      'href',
+      `https://pagespeed.web.dev/analysis?url=${window.location.origin}`
+    );
+  }
+</script>

@@ -1,40 +1,27 @@
 ---
 const items = [
-  {
-    title: 'Site 100% seu',
-    desc: 'Domínio, código e conteúdo registrados no seu nome.',
-    icon: '<circle cx="7.5" cy="15.5" r="5.5" /><path d="m21 2-9.6 9.6" /><path d="m15.5 7.5 3 3L22 7l-3-3" />',
-  },
-  {
-    title: 'Sem mensalidade',
-    desc: 'Você paga pelo projeto — não por taxas escondidas.',
-    icon: '<rect x="2" y="6" width="20" height="12" rx="2" /><circle cx="12" cy="12" r="2" /><path d="M6 12h.01M18 12h.01" />',
-  },
-  {
-    title: 'Proposta em 1 dia útil',
-    desc: 'Escopo, prazo e investimento claros desde o início.',
-    icon: '<circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />',
-  },
-  {
-    title: '30 dias de suporte',
-    desc: 'Acompanhamento dedicado após o lançamento, sem custo.',
-    icon: '<path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />',
-  },
+  'Site 100% seu',
+  'Atendimento em minutos',
+  'Sem mensalidade',
+  'Suporte incluso por 30 dias',
+  'Nota 90+ no PageSpeed',
+  'Carregamento abaixo de 1 segundo',
+  'Sem plugins vulneráveis',
+  'Entrega em até 3 dias úteis',
 ];
 ---
 
 <section class="trust" aria-label="Compromissos WordPane">
-  <div class="container">
-    {items.map((item) => (
-      <div class="trust-item" data-reveal>
-        <span class="icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={item.icon} />
-        </span>
-        <div>
-          <strong>{item.title}</strong>
-          <span>{item.desc}</span>
-        </div>
-      </div>
+  <div class="marquee">
+    {[false, true].map((hidden) => (
+      <ul class="marquee-track" aria-hidden={hidden ? 'true' : undefined}>
+        {items.map((item) => (
+          <li>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" /></svg>
+            {item}
+          </li>
+        ))}
+      </ul>
     ))}
   </div>
 </section>

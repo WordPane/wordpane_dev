@@ -1,6 +1,4 @@
 ---
-import { WHATSAPP_LINK } from '../config';
-
 const rows = [
   {
     aspect: 'Velocidade de carregamento',
@@ -25,7 +23,7 @@ const rows = [
   {
     aspect: 'Estabilidade',
     wp: 'Atualizações podem quebrar o site do dia para a noite',
-    ours: 'Código estável, que não se desgasta com o tempo',
+    ours: 'Estável: não quebra sozinho com o tempo',
   },
   {
     aspect: 'Custo de hospedagem',
@@ -51,9 +49,9 @@ const rows = [
       <span class="eyebrow">Comparativo</span>
       <h2>WordPress ou um site <span class="gradient-text">WordPane</span>?</h2>
       <p>
-        Usamos a mesma tecnologia que gigantes globais da tecnologia escolheram
-        para seus próprios sites. E a diferença para o WordPress não é opinião —
-        é medida em milhões de sites reais:
+        Trabalhamos com a mesma tecnologia que as maiores empresas do mundo
+        usam nos próprios sites. E a vantagem sobre o WordPress não é achismo:
+        é medida em milhões de sites reais.
       </p>
     </div>
 
@@ -77,6 +75,7 @@ const rows = [
       </div>
       <p class="cwv-source">
         Fonte: <a href="https://httparchive.org/" target="_blank" rel="noopener">HTTP Archive</a> e <a href="https://developer.chrome.com/docs/crux" target="_blank" rel="noopener">Chrome UX Report</a> — dados reais de milhões de sites em produção.
+        <a class="cwv-dataset" href="https://httparchive.org/reports/techreport/tech?client=mobile&tech=Astro,WordPress,Gatsby,Next.js,Nuxt.js&geo=ALL&rank=ALL&page=1" target="_blank" rel="noopener">Ver o conjunto de dados completo</a>
       </p>
     </div>
 
@@ -112,13 +111,10 @@ const rows = [
     </div>
 
     <div class="compare-cta" data-reveal>
-      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
-        O WordPress ainda atende alguns casos de uso. Mas se o seu objetivo é
-        performance, segurança e conversão, a comparação fala por si.
+      <p style="color: var(--text-muted);">
+        O WordPress ainda tem seu lugar. Mas se você quer velocidade,
+        segurança e vendas, a tabela fala por si.
       </p>
-      <a class="btn btn-primary" href={WHATSAPP_LINK} target="_blank" rel="noopener">
-        Quero um site assim
-      </a>
     </div>
   </div>
 </section>
