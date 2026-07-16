@@ -1,26 +1,56 @@
 ---
 import { Image } from 'astro:assets';
 import logoWhite from '../assets/brand/logo-white.png';
-import { WHATSAPP_LINK, EMAIL, SITE_NAME } from '../config';
+import { WHATSAPP_LINK, EMAIL, SITE_NAME, SITE_URL } from '../config';
 
 const year = new Date().getFullYear();
+const pagespeedUrl = `https://pagespeed.web.dev/analysis?url=${SITE_URL}`;
 ---
 
 <footer class="site-footer">
   <div class="container">
+    <div class="footer-guarantee" data-reveal>
+      <div class="seal">
+        <img src="/brand/symbol.png" alt="" aria-hidden="true" width="56" height="32" />
+        <div>
+          <strong>Garantia de performance WordPane</strong>
+          <p>
+            Todo site que entregamos sai com nota 90+ no Google PageSpeed e
+            carregamento abaixo de 1 segundo. Se o seu não atingir, refazemos
+            a otimização sem custo adicional.
+          </p>
+        </div>
+      </div>
+      <a class="btn btn-primary" href={WHATSAPP_LINK} target="_blank" rel="noopener">
+        Quero esse padrão no meu site
+      </a>
+    </div>
+
     <div class="footer-grid">
       <div class="footer-brand">
         <Image src={logoWhite} alt="WordPane" width={440} format="webp" />
         <p>Sites profissionais de alta performance, feitos para converter.</p>
+        <p>Atendemos clientes em todo o Brasil.</p>
       </div>
-      <div class="footer-nav">
+      <nav class="footer-nav" aria-label="Rodapé">
         <div>
           <strong>Navegação</strong>
           <ul>
             <li><a href="#beneficios">Benefícios</a></li>
+            <li><a href="#tecnologia">Tecnologia</a></li>
             <li><a href="#comparativo">Comparativo</a></li>
             <li><a href="#processo">Processo</a></li>
             <li><a href="#faq">Dúvidas</a></li>
+          </ul>
+        </div>
+        <div>
+          <strong>Serviços</strong>
+          <ul>
+            <li><span>Criação de sites</span></li>
+            <li><span>Landing pages</span></li>
+            <li><span>Lojas virtuais</span></li>
+            <li><span>Migração de WordPress</span></li>
+            <li><span>Otimização de desempenho</span></li>
           </ul>
         </div>
         <div>
@@ -30,12 +60,18 @@ const year = new Date().getFullYear();
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener">WhatsApp</a>
             </li>
             <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
+            <li><span>Seg. a sex., 9h às 18h</span></li>
           </ul>
         </div>
-      </div>
+      </nav>
     </div>
+
     <div class="footer-bottom">
       <p>© {year} {SITE_NAME}. Todos os direitos reservados.</p>
+      <p class="footer-demo">
+        Este site é a nossa vitrine —
+        <a href={pagespeedUrl} target="_blank" rel="noopener">teste nossa velocidade no PageSpeed</a>.
+      </p>
     </div>
   </div>
 </footer>
