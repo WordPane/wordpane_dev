@@ -1,0 +1,198 @@
+---
+import Quote from '../../../layouts/Quote.astro';
+import { WHATSAPP_NUMBER } from '../../../config';
+
+const client = {
+  name: 'Cel Engenharia de Manutenção LTDA',
+  cnpj: '91.382.234/0001-04',
+  address: 'Avenida Sertório, 2375 - Navegantes · Porto Alegre - RS · CEP 91030-541',
+  project: 'Criação de novo site — celengenharia.com.br',
+};
+
+const plan = {
+  name: 'Site Multi-Páginas',
+  tag: 'Site completo e profissional',
+  price: '697,90',
+  items: [
+    'Design personalizado e moderno',
+    'Até 5 páginas internas',
+    'Página de serviços detalhada',
+    'Página "Quem Somos" / Institucional',
+    'Galeria de projetos / portfólio',
+    'Blog / Notícias (opcional)',
+    'Formulário de contato integrado',
+    'Mapa de localização integrado',
+    'Links para redes sociais',
+    'Otimização para buscadores (SEO)',
+    'Site 100% responsivo',
+    'Certificado SSL (HTTPS)',
+  ],
+  delivery: 'Entrega em até 10 dias úteis',
+};
+
+const benefits = [
+  {
+    title: 'Carregamento instantâneo',
+    desc: 'Páginas que abrem em menos de 1 segundo — visitante não desiste do seu site.',
+    icon: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />',
+  },
+  {
+    title: 'Nota máxima nas métricas do Google',
+    desc: 'Seu site nasce pronto para pontuar alto nos Core Web Vitals, critério oficial de ranqueamento.',
+    icon: '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" />',
+  },
+  {
+    title: 'Segurança blindada',
+    desc: 'Sem plugins e sem banco de dados exposto: não existe porta de entrada para invasores.',
+    icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" />',
+  },
+  {
+    title: 'SEO técnico nativo',
+    desc: 'Estrutura otimizada para buscadores desde o primeiro dia, sem depender de plugins pagos.',
+    icon: '<circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />',
+  },
+  {
+    title: 'Hospedagem leve e barata',
+    desc: 'Não exige servidor robusto: o custo de hospedagem é muito menor que o de um site comum.',
+    icon: '<rect x="2" y="6" width="20" height="12" rx="2" /><circle cx="12" cy="12" r="2" /><path d="M6 12h.01M18 12h.01" />',
+  },
+  {
+    title: 'Estável, sem manutenção corretiva',
+    desc: 'Não quebra com atualizações de plugins ou temas — seu site simplesmente continua no ar.',
+    icon: '<polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" />',
+  },
+];
+
+const approveLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  'Olá! Sou da Cel Engenharia e quero aprovar a proposta Nº 834/2026 — Site Multi-Páginas (R$ 697,90).'
+)}`;
+---
+
+<Quote
+  title="Proposta Nº 834/2026 — Cel Engenharia | WordPane"
+  quoteNumber="834/2026"
+  quoteDate="Porto Alegre, 12 de junho de 2026"
+>
+  <section class="quote-section client-block">
+    <span class="quote-label">Proposta para</span>
+    <h1>{client.name}</h1>
+    <div class="client-meta">
+      <span>CNPJ: {client.cnpj}</span>
+      <span>{client.address}</span>
+      <span><strong>Projeto:</strong> {client.project}</span>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <span class="quote-label">Investimento</span>
+    <h2>O plano do seu novo site</h2>
+    <div class="plan-card">
+      <div class="plan-head">
+        <div>
+          <h3>{plan.name}</h3>
+          <span class="plan-tag">{plan.tag}</span>
+        </div>
+        <div class="plan-price">
+          <span class="amount"><sup>R$</sup> {plan.price}</span>
+          <span>pagamento único</span>
+        </div>
+      </div>
+      <div class="plan-body">
+        <ul class="plan-list">
+          {plan.items.map((item) => (
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <span class="plan-delivery">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+          {plan.delivery}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <span class="quote-label">Diferencial</span>
+    <h2>A tecnologia por trás do seu site</h2>
+    <p class="benefits-intro">
+      Seu site será construído com a geração mais moderna de desenvolvimento
+      web — a mesma tecnologia que as maiores empresas do mundo usam em seus
+      próprios sites. Na prática, isso significa:
+    </p>
+    <div class="benefits-grid">
+      {benefits.map((b) => (
+        <div class="benefit">
+          <span class="icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={b.icon} />
+          </span>
+          <div>
+            <strong>{b.title}</strong>
+            <span>{b.desc}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <span class="quote-label">Condições</span>
+    <h2>Como vamos trabalhar</h2>
+    <ul class="terms-list">
+      <li>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+        <span>
+          <strong>Materiais do projeto:</strong> para agilizar o desenvolvimento,
+          solicitamos o envio de textos, fotos, logotipos, vídeos e demais
+          conteúdos que entrarão no site. Nossa equipe orienta sobre formatos
+          e especificações ideais.
+        </span>
+      </li>
+      <li>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+        <span>
+          <strong>Início do projeto:</strong> o prazo de entrega começa a contar
+          após a aprovação da proposta e o recebimento do material.
+        </span>
+      </li>
+      <li>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+        <span>
+          <strong>Pagamento:</strong> investimento em pagamento único, sem
+          mensalidades para a WordPane. Custos recorrentes de domínio e
+          hospedagem são de responsabilidade do cliente.
+        </span>
+      </li>
+      <li>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+        <span>
+          <strong>Validade:</strong> esta proposta é válida por 15 dias a
+          partir da data de emissão.
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="quote-section quote-cta no-print">
+    <h2>Vamos tirar seu projeto do papel?</h2>
+    <p>Confirme pelo WhatsApp e iniciamos o desenvolvimento do seu site.</p>
+    <a class="btn btn-primary" href={approveLink} target="_blank" rel="noopener">
+      Aprovar proposta pelo WhatsApp
+    </a>
+  </section>
+
+  <section class="quote-section">
+    <div class="signatures">
+      <div class="sign-line">
+        <strong>Assinatura do Cliente</strong>
+        {client.name}
+      </div>
+      <div class="sign-line">
+        <strong>Assinatura WordPane</strong>
+        WordPane Administração de Sistemas LTDA
+      </div>
+    </div>
+  </section>
+</Quote>

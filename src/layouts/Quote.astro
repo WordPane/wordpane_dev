@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import logoWhite from '../assets/brand/logo-white.png';
+import { COMPANY, EMAIL, WHATSAPP_DISPLAY } from '../config';
+import '../styles/global.css';
+import '../styles/quote.css';
+
+interface Props {
+  title: string;
+  quoteNumber: string;
+  quoteDate: string;
+}
+
+const { title, quoteNumber, quoteDate } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#071928" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+  <body class="quote-body">
+    <main class="quote-doc">
+      <header class="quote-header">
+        <Image src={logoWhite} alt="WordPane" width={500} format="webp" loading="eager" />
+        <div class="quote-meta">
+          <span>Proposta Comercial</span>
+          <strong>Nº {quoteNumber}</strong>
+          <span>{quoteDate}</span>
+        </div>
+      </header>
+
+      <slot />
+
+      <footer class="quote-footer">
+        <div>
+          <strong>{COMPANY.legalName}</strong>
+          CNPJ: {COMPANY.cnpj}<br />
+          {COMPANY.address}<br />
+          {COMPANY.city} | CEP: {COMPANY.cep}
+        </div>
+        <div>
+          <strong>Contato</strong>
+          WhatsApp: {WHATSAPP_DISPLAY}<br />
+          {EMAIL}
+        </div>
+        <span class="slogan">"Transformando ideias em experiências digitais"</span>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /orcamento/
 
 Sitemap: https://wordpane.dev/sitemap-index.xml

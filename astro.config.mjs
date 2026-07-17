@@ -3,5 +3,10 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://wordpane.dev',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // Orçamentos são privados: nunca entram no sitemap.
+      filter: (page) => !page.includes('/orcamento/'),
+    }),
+  ],
 });

@@ -1,0 +1,356 @@
+/* ============================================
+   Orçamentos — documento comercial
+   Usado apenas pelas páginas em /orcamento/
+   ============================================ */
+
+:root {
+  --ink: #14324a;
+  --ink-muted: #52708a;
+  --green-doc: #0d8a45;
+  --line: #e6edf3;
+  --green-soft: #eafff3;
+}
+
+.quote-body {
+  background: var(--navy);
+  min-height: 100vh;
+  padding: clamp(1rem, 4vw, 3rem) 1rem;
+}
+
+.quote-doc {
+  max-width: 54rem;
+  margin-inline: auto;
+  background: #ffffff;
+  color: var(--ink);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- Cabeçalho ---------- */
+
+.quote-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  background: var(--navy);
+  padding: 1.75rem clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.quote-header img {
+  height: 1.9rem;
+  width: auto;
+}
+
+.quote-meta {
+  display: grid;
+  gap: 0.15rem;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
+.quote-meta strong {
+  color: var(--green);
+  font-size: 1.05rem;
+}
+
+/* ---------- Seções ---------- */
+
+.quote-section {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.quote-section h2 {
+  color: var(--navy);
+  font-size: 1.3rem;
+  margin-bottom: 1.25rem;
+}
+
+.quote-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green-doc);
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- Bloco do cliente ---------- */
+
+.client-block h1 {
+  color: var(--navy);
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  margin-block: 0.5rem 1rem;
+}
+
+.client-meta {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- Cartão do plano ---------- */
+
+.plan-card {
+  border: 1px solid #d5e8dc;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.plan-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: linear-gradient(120deg, var(--green-soft), #f4fbf7);
+  padding: 1.5rem 1.75rem;
+}
+
+.plan-head h3 {
+  color: var(--navy);
+  font-size: 1.3rem;
+}
+
+.plan-head .plan-tag {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.plan-price {
+  text-align: right;
+}
+
+.plan-price .amount {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--green-doc);
+  line-height: 1.1;
+}
+
+.plan-price .amount sup {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.plan-price > span {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+
+.plan-body {
+  padding: 1.5rem 1.75rem;
+}
+
+.plan-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 1.5rem;
+}
+
+@media (max-width: 40rem) {
+  .plan-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.plan-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.93rem;
+}
+
+.plan-list svg {
+  color: var(--green-doc);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.plan-delivery {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.45rem 1rem;
+  background: var(--green-soft);
+  color: var(--green-doc);
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 999px;
+}
+
+/* ---------- Benefícios da tecnologia ---------- */
+
+.benefits-intro {
+  color: var(--ink-muted);
+  margin-bottom: 1.5rem;
+  max-width: 42rem;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem 1.5rem;
+}
+
+@media (max-width: 40rem) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.benefit {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.benefit .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 0.55rem;
+  background: var(--green-soft);
+  color: var(--green-doc);
+  flex-shrink: 0;
+}
+
+.benefit strong {
+  display: block;
+  color: var(--navy);
+  font-size: 0.97rem;
+  margin-bottom: 0.1rem;
+}
+
+.benefit span {
+  font-size: 0.87rem;
+  color: var(--ink-muted);
+}
+
+/* ---------- Condições ---------- */
+
+.terms-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.terms-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.93rem;
+}
+
+.terms-list svg {
+  color: var(--green-doc);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.terms-list strong {
+  color: var(--navy);
+}
+
+/* ---------- CTA de aprovação ---------- */
+
+.quote-cta {
+  text-align: center;
+  background: #f6faf8;
+}
+
+.quote-cta h2 {
+  margin-bottom: 0.5rem;
+}
+
+.quote-cta p {
+  color: var(--ink-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- Assinaturas ---------- */
+
+.signatures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  padding-top: 2.5rem;
+}
+
+@media (max-width: 40rem) {
+  .signatures {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sign-line {
+  border-top: 1.5px solid #9db3c4;
+  padding-top: 0.6rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+
+.sign-line strong {
+  display: block;
+  color: var(--ink);
+}
+
+/* ---------- Rodapé do documento ---------- */
+
+.quote-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.72);
+  padding: 1.75rem clamp(1.5rem, 4vw, 2.5rem);
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.quote-footer strong {
+  display: block;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+}
+
+.quote-footer .slogan {
+  color: var(--green);
+  font-style: italic;
+  width: 100%;
+}
+
+/* ---------- Impressão / salvar em PDF ---------- */
+
+@media print {
+  .quote-body {
+    background: #ffffff;
+    padding: 0;
+  }
+
+  .quote-doc {
+    max-width: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .quote-section {
+    break-inside: avoid;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
