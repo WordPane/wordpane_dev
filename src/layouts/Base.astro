@@ -80,6 +80,19 @@ const jsonLd = {
       document
         .querySelectorAll('[data-reveal]')
         .forEach((el) => observer.observe(el));
+
+      // Feixe das bordas: um único relógio global mantém
+      // todos os elementos sincronizados (uma volta a cada 10s).
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const root = document.documentElement;
+        const LAP_MS = 10000;
+        const spin = (now: number) => {
+          const angle = ((now / LAP_MS) * 360) % 360;
+          root.style.setProperty('--border-angle', `${angle}deg`);
+          requestAnimationFrame(spin);
+        };
+        requestAnimationFrame(spin);
+      }
     </script>
   </body>
 </html>
