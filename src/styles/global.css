@@ -9,6 +9,7 @@
 :root {
   --green: #00d164;
   --green-2: #31b068;
+  --green-light: #8df5bb;
   --navy: #071928;
   --white: #ffffff;
 
@@ -103,16 +104,17 @@ h3 {
   background: linear-gradient(
     120deg,
     var(--green) 0%,
-    var(--green-2) 25%,
-    var(--green) 50%,
-    var(--green-2) 75%,
+    var(--green-light) 20%,
+    var(--green) 40%,
+    var(--green-2) 60%,
+    var(--green-light) 80%,
     var(--green) 100%
   );
   background-size: 300% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: gradient-pan 8s ease-in-out infinite;
+  animation: gradient-pan 6s ease-in-out infinite;
 }
 
 @keyframes gradient-pan {
