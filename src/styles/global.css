@@ -114,7 +114,7 @@ h3 {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: gradient-pan 6s ease-in-out infinite;
+  animation: gradient-pan 12s ease-in-out infinite;
 }
 
 @keyframes gradient-pan {
