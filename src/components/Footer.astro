@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import logoWhite from '../assets/brand/logo-white.png';
-import { WHATSAPP_LINK, EMAIL, SITE_NAME, SITE_URL } from '../config';
+import { WHATSAPP_LINK, EMAIL, SITE_NAME, SITE_URL, CRM_LINK } from '../config';
 
 const year = new Date().getFullYear();
 const pagespeedUrl = `https://pagespeed.web.dev/analysis?url=${SITE_URL}`;
@@ -9,21 +9,10 @@ const pagespeedUrl = `https://pagespeed.web.dev/analysis?url=${SITE_URL}`;
 
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-guarantee" data-reveal>
-      <div>
-        <strong>Garantia de performance WordPane</strong>
-        <p>
-          Todo site que entregamos sai com nota 90+ no Google PageSpeed e
-          carregamento abaixo de 1 segundo. Se o seu não atingir, refazemos
-          a otimização sem custo adicional.
-        </p>
-      </div>
-    </div>
-
     <div class="footer-grid">
       <div class="footer-brand">
         <Image src={logoWhite} alt="WordPane" width={440} format="webp" />
-        <p>Sites profissionais de alta performance, feitos para converter.</p>
+        <p>Desenvolvimento de sites e sistemas sob medida, feitos para converter.</p>
         <p>Atendemos clientes em todo o Brasil.</p>
         <a class="footer-badge" id="pagespeed-badge" href={pagespeedUrl} target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
@@ -32,12 +21,18 @@ const pagespeedUrl = `https://pagespeed.web.dev/analysis?url=${SITE_URL}`;
       </div>
       <nav class="footer-nav" aria-label="Rodapé">
         <div>
+          <strong>Serviços</strong>
+          <ul>
+            <li><a href="/desenvolvimento-de-sites/">Desenvolvimento de Sites</a></li>
+            <li><a href="/desenvolvimento-de-sistemas/">Desenvolvimento de Sistemas</a></li>
+          </ul>
+        </div>
+        <div>
           <strong>Navegação</strong>
           <ul>
-            <li><a href="#beneficios">Benefícios</a></li>
-            <li><a href="#comparativo">Comparativo</a></li>
-            <li><a href="#processo">Processo</a></li>
-            <li><a href="#faq">Dúvidas</a></li>
+            <li><a href="/#processo">Processo</a></li>
+            <li><a href="/#faq">Dúvidas</a></li>
+            <li><a href={CRM_LINK} target="_blank" rel="noopener">Acesso ao CRM</a></li>
           </ul>
         </div>
         <div>

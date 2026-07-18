@@ -1,0 +1,35 @@
+---
+export interface Tech {
+  name: string;
+  desc: string;
+}
+
+interface Props {
+  id?: string;
+  eyebrow: string;
+  titleA: string;
+  titleB: string;
+  intro: string;
+  techs: Tech[];
+}
+
+const { id, eyebrow, titleA, titleB, intro, techs } = Astro.props;
+---
+
+<section id={id} class="tech">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">{eyebrow}</span>
+      <h2>{titleA} <span class="gradient-text">{titleB}</span></h2>
+      <p>{intro}</p>
+    </div>
+    <div class="tech-grid">
+      {techs.map((tech) => (
+        <article class="card tech-card" data-reveal>
+          <h3>{tech.name}</h3>
+          <p>{tech.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

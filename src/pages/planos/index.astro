@@ -1,0 +1,375 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import logoWhite from '../../assets/brand/logo-white.png';
+import { EMAIL, SITE_NAME, SITE_URL, WHATSAPP_LINK, WHATSAPP_NUMBER } from '../../config';
+import '../../styles/planos.css';
+
+const wa = (msg: string) =>
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+
+const createPlans = [
+  {
+    name: 'Site Landing Page',
+    tag: 'Uma página que vende por você',
+    price: '297,00',
+    suffix: 'pagamento único',
+    badge: null,
+    featured: false,
+    delivery: 'Entrega em poucos dias úteis',
+    cta: 'Começar com Landing Page',
+    link: wa('Olá! Quero contratar o plano Site Landing Page (R$ 297,00).'),
+    items: [
+      'Página única, completa e profissional',
+      'Design sob medida com a identidade da sua marca',
+      'Estrutura focada em conversão — ideal para anúncios e campanhas',
+      'Botão de WhatsApp e formulário de contato',
+      'Site 100% responsivo',
+      'SEO técnico nativo para o Google',
+      'Certificado SSL (HTTPS)',
+      'Nota 90+ no PageSpeed e carga abaixo de 1 segundo',
+    ],
+  },
+  {
+    name: 'Site Multipage',
+    tag: 'Presença digital completa, pronta para crescer',
+    price: '397,00',
+    suffix: 'pagamento único',
+    badge: 'Mais completo',
+    featured: true,
+    delivery: 'Entrega em poucos dias úteis',
+    cta: 'Começar com Multipage',
+    link: wa('Olá! Quero contratar o plano Site Multipage (R$ 397,00).'),
+    items: [
+      'Tudo do plano Landing Page',
+      'Até 6 páginas: Início, Sobre, Serviços, Portfólio, Blog, Contato…',
+      'Página de serviços detalhada',
+      'Mais páginas ranqueando no Google',
+      'Navegação completa para apresentar sua empresa',
+      'Pronto para crescer: novas páginas por R$ 37',
+    ],
+  },
+];
+
+const carePlans = [
+  {
+    name: 'Atualização ou nova página',
+    tag: 'Serviço avulso, sem burocracia',
+    price: '37,00',
+    suffix: 'por solicitação',
+    badge: null,
+    featured: false,
+    note: 'Para sites criados pela WordPane.',
+    cta: 'Solicitar atualização',
+    link: wa('Olá! Quero contratar o serviço de atualização ou adição de página (R$ 37,00).'),
+    items: [
+      'Atualização de conteúdo em uma página existente, ou',
+      'Criação de uma nova página no seu site',
+      'Mesmo padrão visual e de performance do site original',
+      'Publicação rápida',
+    ],
+  },
+  {
+    name: 'Pacote de Manutenção',
+    tag: 'Seu site evoluindo todo mês',
+    price: '97,00',
+    suffix: 'por mês',
+    badge: 'Melhor custo-benefício',
+    featured: true,
+    note: null,
+    cta: 'Assinar manutenção',
+    link: wa('Olá! Quero contratar o Pacote de Manutenção (R$ 97,00/mês).'),
+    items: [
+      'Até 3 novas páginas por mês',
+      'Até 10 atualizações por mês nas páginas atuais',
+      'Ajustes de textos, imagens, seções e links',
+      'Suporte prioritário no WhatsApp',
+      'Melhor custo: páginas avulsas saem por R$ 37 cada',
+    ],
+  },
+];
+
+const differentials = [
+  {
+    title: 'Velocidade de criação',
+    desc: 'Do briefing ao ar em poucos dias úteis: processo enxuto, sem reunião interminável.',
+    icon: '<circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />',
+  },
+  {
+    title: 'Performance extrema',
+    desc: 'Páginas que abrem em menos de 1 segundo e alcançam nota 90+ nas ferramentas do Google.',
+    icon: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />',
+  },
+  {
+    title: 'Suporte próximo',
+    desc: 'Atendimento direto pelo WhatsApp, com resposta em poucos minutos — sem robô, sem fila.',
+    icon: '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />',
+  },
+  {
+    title: 'Otimização para o Google',
+    desc: 'SEO técnico nativo: estrutura, velocidade e dados estruturados prontos para ranquear desde o primeiro dia.',
+    icon: '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" />',
+  },
+  {
+    title: 'Segurança blindada',
+    desc: 'Sem plugins e sem banco de dados exposto: não existe porta de entrada para invasores.',
+    icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" />',
+  },
+  {
+    title: 'Hospedagem leve e barata',
+    desc: 'Tecnologia moderna que não exige servidor robusto: o custo mensal de hospedagem é muito menor.',
+    icon: '<rect x="2" y="6" width="20" height="12" rx="2" /><circle cx="12" cy="12" r="2" /><path d="M6 12h.01M18 12h.01" />',
+  },
+];
+
+const year = new Date().getFullYear();
+const pagespeedUrl = `https://pagespeed.web.dev/analysis?url=${SITE_URL}`;
+---
+
+<Base
+  title="Planos e Preços — Criação de Sites | WordPane"
+  description="Planos WordPane: Site Landing Page por R$ 297, Site Multipage por R$ 397, atualização de página por R$ 37 e pacote de manutenção por R$ 97/mês. Sites rápidos, seguros e otimizados."
+  noindex={true}
+>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/" aria-label="WordPane — voltar ao início">
+        <Image src={logoWhite} alt="WordPane" width={500} format="webp" loading="eager" />
+      </a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a href="#planos">Planos</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#manutencao">Manutenção</a>
+      </nav>
+      <a class="btn btn-primary btn-sm" href={WHATSAPP_LINK} target="_blank" rel="noopener">
+        Solicitar proposta
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner" data-reveal>
+          <span class="eyebrow">Planos e preços</span>
+          <h1>
+            <span class="line">Planos para tirar seu site</span>
+            <span class="line gradient-text">do papel ainda este mês.</span>
+          </h1>
+          <p class="hero-sub">
+            Pagamento único, entrega em poucos dias e a tecnologia mais rápida
+            da web. Escolha o plano, chame no WhatsApp e começamos.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#planos">Ver planos</a>
+            <a class="btn btn-outline" href={WHATSAPP_LINK} target="_blank" rel="noopener">
+              Falar no WhatsApp
+            </a>
+          </div>
+          <p class="hero-note">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+            Resposta em poucos minutos · Sem mensalidade nos planos de criação
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="planos">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Criação de site</span>
+          <h2>Escolha o tamanho do <span class="gradient-text">seu novo site</span></h2>
+          <p>
+            Dois formatos, um único padrão: sites rápidos, seguros e
+            otimizados. Pagamento único, sem mensalidade para a WordPane.
+          </p>
+        </div>
+        <div class="pricing-grid">
+          {createPlans.map((plan) => (
+            <article class:list={['price-card', { featured: plan.featured }]} data-reveal>
+              {plan.badge && <span class="price-badge">{plan.badge}</span>}
+              <h3>{plan.name}</h3>
+              <p class="price-tag">{plan.tag}</p>
+              <div class="price-value">
+                <span class:list={['amount', { 'gradient-text': plan.featured }]}>
+                  <sup>R$</sup> {plan.price}
+                </span>
+                <span class="suffix">{plan.suffix}</span>
+              </div>
+              <ul class="price-list">
+                {plan.items.map((item) => (
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div class="price-foot">
+                <span class="price-delivery">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+                  {plan.delivery}
+                </span>
+                <a class:list={['btn', plan.featured ? 'btn-primary' : 'btn-outline']} href={plan.link} target="_blank" rel="noopener">
+                  {plan.cta}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p class="pricing-note" data-reveal>
+          Domínio e hospedagem não inclusos — custos recorrentes de
+          responsabilidade do cliente. <strong>Garantia WordPane:</strong> se o
+          site não atingir nota 90+ no Google PageSpeed, refazemos a otimização
+          sem custo adicional.
+        </p>
+      </div>
+    </section>
+
+    <section id="diferenciais" class="included">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Diferenciais</span>
+          <h2>Em qualquer plano, o padrão é <span class="gradient-text">máximo</span></h2>
+          <p>
+            Não importa o valor do plano: todo site WordPane sai com o mesmo
+            nível de tecnologia, otimização e cuidado.
+          </p>
+        </div>
+        <div class="grid-cards">
+          {differentials.map((d) => (
+            <article class="card" data-reveal>
+              <span class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={d.icon} />
+              </span>
+              <h3>{d.title}</h3>
+              <p>{d.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="manutencao">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Depois do ar</span>
+          <h2>Seu site <span class="gradient-text">sempre atualizado</span></h2>
+          <p>
+            Precisa mudar um texto, trocar fotos ou adicionar páginas? Temos
+            opções avulsas e mensais para o seu site nunca ficar parado.
+          </p>
+        </div>
+        <div class="pricing-grid">
+          {carePlans.map((plan) => (
+            <article class:list={['price-card', { featured: plan.featured }]} data-reveal>
+              {plan.badge && <span class="price-badge">{plan.badge}</span>}
+              <h3>{plan.name}</h3>
+              <p class="price-tag">{plan.tag}</p>
+              <div class="price-value">
+                <span class:list={['amount', { 'gradient-text': plan.featured }]}>
+                  <sup>R$</sup> {plan.price}
+                </span>
+                <span class="suffix">{plan.suffix}</span>
+              </div>
+              <ul class="price-list">
+                {plan.items.map((item) => (
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div class="price-foot">
+                {plan.note && <span class="price-note">{plan.note}</span>}
+                <a class:list={['btn', plan.featured ? 'btn-primary' : 'btn-outline']} href={plan.link} target="_blank" rel="noopener">
+                  {plan.cta}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-wrap" data-reveal>
+          <div class="guarantee-card">
+            <span class="guarantee-chip">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+              Sem compromisso
+            </span>
+            <h3>Pronto para tirar seu site do papel?</h3>
+            <p>
+              Chame no WhatsApp, conte sua ideia e receba uma proposta gratuita
+              em poucos minutos.
+            </p>
+            <a class="btn" href={WHATSAPP_LINK} target="_blank" rel="noopener">
+              Solicitar proposta gratuita
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <Image src={logoWhite} alt="WordPane" width={440} format="webp" />
+          <p>Sites profissionais de alta performance, feitos para converter.</p>
+          <p>Atendemos clientes em todo o Brasil.</p>
+          <a class="footer-badge" id="pagespeed-badge" href={pagespeedUrl} target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+            Este site é nossa vitrine: teste nossa velocidade
+          </a>
+        </div>
+        <nav class="footer-nav" aria-label="Rodapé">
+          <div>
+            <strong>Navegação</strong>
+            <ul>
+              <li><a href="#planos">Planos</a></li>
+              <li><a href="#diferenciais">Diferenciais</a></li>
+              <li><a href="#manutencao">Manutenção</a></li>
+              <li><a href="/">Voltar ao site</a></li>
+            </ul>
+          </div>
+          <div>
+            <strong>Contato</strong>
+            <ul>
+              <li>
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener">WhatsApp</a>
+              </li>
+              <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
+              <li><span>Seg. a sex., 9h às 18h</span></li>
+              <li><span>Resposta em poucos minutos</span></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© {year} {SITE_NAME}. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <WhatsAppFloat />
+</Base>
+
+<script>
+  const header = document.querySelector('.site-header');
+  const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 12);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const pagespeedBadge = document.getElementById('pagespeed-badge');
+  if (pagespeedBadge) {
+    pagespeedBadge.setAttribute(
+      'href',
+      `https://pagespeed.web.dev/analysis?url=${window.location.origin}`
+    );
+  }
+</script>

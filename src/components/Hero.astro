@@ -2,97 +2,29 @@
 import { WHATSAPP_LINK } from '../config';
 ---
 
-<section class="hero">
+<section class="hero hero-full">
   <div class="container">
     <div class="hero-inner">
-      <span class="eyebrow">Criação de sites profissionais</span>
+      <span class="eyebrow">Desenvolvimento de sites e sistemas</span>
       <h1>
-        <span class="line">Sites que carregam em instantes e</span> <span class="line gradient-text">vendem 24 horas por dia.</span>
+        <span class="line">Sites e sistemas sob medida,</span> <span class="line gradient-text">construídos para converter.</span>
       </h1>
       <p class="hero-sub">
-        Design sob medida e a tecnologia mais rápida da web. Seu site abre na
-        hora, aparece no Google e faz o visitante virar cliente.
+        A WordPane projeta sites ultrarrápidos e sistemas web sob medida para a
+        sua operação. Tecnologia moderna, entrega ágil e acompanhamento
+        transparente pelo nosso CRM — tudo para transformar visitantes em
+        clientes.
       </p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href={WHATSAPP_LINK} target="_blank" rel="noopener">
           Solicitar proposta gratuita
         </a>
-        <a class="btn btn-outline" href="#comparativo">Ver comparativo</a>
+        <a class="btn btn-outline" href="#servicos">Conhecer os serviços</a>
       </div>
       <p class="hero-note">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
-        Resposta em poucos minutos · Sem compromisso · Sem mensalidade
+        Resposta em poucos minutos · Proposta gratuita · Sem compromisso
       </p>
-    </div>
-
-    <div class="hero-visual" aria-hidden="true">
-      <div class="report-card">
-        <div class="report-header">
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="report-url">pagespeed.web.dev · seusite.com.br</span>
-        </div>
-        <div class="report-scores">
-          <div>
-            <div class="score-ring"><strong>100</strong></div>
-            <span>Desempenho</span>
-          </div>
-          <div>
-            <div class="score-ring"><strong>100</strong></div>
-            <span>Acessibilidade</span>
-          </div>
-          <div>
-            <div class="score-ring"><strong>100</strong></div>
-            <span>Práticas recomendadas</span>
-          </div>
-          <div>
-            <div class="score-ring"><strong>100</strong></div>
-            <span>SEO</span>
-          </div>
-        </div>
-      </div>
-      <div class="float-chip chip-1">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
-        0,4 s de carregamento
-      </div>
-      <div class="float-chip chip-2">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" /></svg>
-        Sem plugins vulneráveis
-      </div>
     </div>
   </div>
 </section>
-
-<script>
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const rings = document.querySelectorAll<HTMLElement>('.score-ring');
-
-  if (rings.length && !reduceMotion) {
-    const DURATION = 1300;
-
-    const animateRing = (ring: HTMLElement, delay: number) => {
-      const num = ring.querySelector('strong');
-      window.setTimeout(() => {
-        const start = performance.now();
-        const tick = (now: number) => {
-          const progress = Math.min((now - start) / DURATION, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const value = Math.round(eased * 100);
-          ring.style.background = `conic-gradient(var(--green) ${value}%, rgba(255, 255, 255, 0.08) ${value}%)`;
-          if (num) num.textContent = String(value);
-          if (progress < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      }, delay);
-    };
-
-    rings.forEach((ring, i) => {
-      ring.style.background =
-        'conic-gradient(var(--green) 0%, rgba(255, 255, 255, 0.08) 0%)';
-      const num = ring.querySelector('strong');
-      if (num) num.textContent = '0';
-      animateRing(ring, 300 + i * 180);
-    });
-  }
-</script>

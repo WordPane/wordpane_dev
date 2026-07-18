@@ -1,14 +1,20 @@
 ---
-const items = [
-  'Site 100% seu',
-  'Atendimento em minutos',
-  'Sem mensalidade',
-  'Suporte incluso por 30 dias',
-  'Nota 90+ no PageSpeed',
-  'Carregamento abaixo de 1 segundo',
-  'Sem plugins vulneráveis',
-  'Entrega em até 3 dias úteis',
-];
+interface Props {
+  items?: string[];
+}
+
+const {
+  items = [
+    'Sites em até 3 dias úteis',
+    'Sistemas sob medida',
+    'Nota 90+ no PageSpeed',
+    'Acompanhamento pelo CRM',
+    'Atendimento em minutos',
+    'Segurança de ponta a ponta',
+    'Código 100% seu',
+    'Suporte dedicado',
+  ],
+} = Astro.props;
 ---
 
 <section class="trust" aria-label="Compromissos WordPane">

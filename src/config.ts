@@ -6,9 +6,17 @@ export const EMAIL = 'hello@wordpane.dev';
 // Número no formato internacional, somente dígitos (DDI + DDD + número).
 export const WHATSAPP_NUMBER = '5551993060845';
 export const WHATSAPP_DISPLAY = '(51) 99306-0845';
-export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-  'Olá! Quero uma proposta gratuita para criação de site.'
-)}`;
+
+// Monta um link de WhatsApp com mensagem pré-preenchida.
+export const waLink = (message: string) =>
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+export const WHATSAPP_LINK = waLink(
+  'Olá! Quero uma proposta gratuita para um projeto com a WordPane.'
+);
+
+// Portal de gestão de projetos dos clientes WordPane.
+export const CRM_LINK = 'https://crm.wordpane.dev';
 
 // Dados legais da empresa (usados em orçamentos e documentos).
 export const COMPANY = {

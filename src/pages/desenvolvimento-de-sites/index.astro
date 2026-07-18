@@ -1,0 +1,226 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import PageHero from '../../components/PageHero.astro';
+import ReportCard from '../../components/ReportCard.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Pain from '../../components/Pain.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import Comparison from '../../components/Comparison.astro';
+import TechSection from '../../components/TechSection.astro';
+import Deliverables from '../../components/Deliverables.astro';
+import StepsSection from '../../components/StepsSection.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Faq from '../../components/Faq.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+
+const trustItems = [
+  'Entrega em até 3 dias úteis',
+  'Nota 90+ no PageSpeed',
+  'Carregamento abaixo de 1 segundo',
+  'Sem plugins vulneráveis',
+  'Site 100% seu',
+  'Sem mensalidade',
+  'Acompanhamento pelo CRM',
+  'Suporte incluso por 30 dias',
+];
+
+const features = [
+  {
+    icon: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />',
+    title: 'Velocidade que vende',
+    desc: 'Páginas que abrem em menos de 1 segundo. Cada segundo a menos no carregamento é visitante a mais virando cliente.',
+  },
+  {
+    icon: '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" />',
+    title: 'SEO técnico nativo',
+    desc: 'Estrutura, dados estruturados, sitemap e metas otimizadas por padrão: seu site nasce pronto para ranquear no Google.',
+  },
+  {
+    icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" />',
+    title: 'Segurança blindada',
+    desc: 'Sem plugins e sem banco de dados exposto: não existe porta de entrada para invasor. Seu site não vira estatística de ataque.',
+  },
+  {
+    icon: '<circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" />',
+    title: 'Design que converte',
+    desc: 'Layout sob medida para a sua marca, pensado para guiar o visitante até o contato, o orçamento ou a compra.',
+  },
+  {
+    icon: '<circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />',
+    title: 'Agilidade na entrega',
+    desc: 'Do briefing ao ar em até 3 dias úteis. Processo enxuto, sem reunião interminável e sem enrolação.',
+  },
+  {
+    icon: '<line x1="4" y1="21" x2="4" y2="14" /><line x1="4" y1="10" x2="4" y2="3" /><line x1="12" y1="21" x2="12" y2="12" /><line x1="12" y1="8" x2="12" y2="3" /><line x1="20" y1="21" x2="20" y2="16" /><line x1="20" y1="12" x2="20" y2="3" /><line x1="1" y1="14" x2="7" y2="14" /><line x1="9" y1="8" x2="15" y2="8" /><line x1="17" y1="16" x2="23" y2="16" />',
+    title: 'Manutenção mínima',
+    desc: 'Sem atualização de plugin quebrando o site. Hospedagem leve e barata, sem susto na fatura no fim do mês.',
+  },
+  {
+    icon: '<polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" />',
+    title: 'Pronto para picos',
+    desc: 'Seu site aguenta qualquer volume de visitas — inclusive no dia da campanha — sem cair e sem custo extra.',
+  },
+  {
+    icon: '<rect x="3" y="3" width="18" height="18" rx="2" /><line x1="3" y1="9" x2="21" y2="9" /><line x1="9" y1="21" x2="9" y2="9" />',
+    title: 'Transparência via CRM',
+    desc: 'Você acompanha proposta, etapas e entregas do site pelo CRM da WordPane, em tempo real.',
+  },
+];
+
+const techs = [
+  { name: 'Astro', desc: 'Gera páginas estáticas leves e ultrarrápidas: a base dos nossos sites abaixo de 1 segundo.' },
+  { name: 'TypeScript', desc: 'Código tipado e robusto, fácil de manter e evoluir com segurança.' },
+  { name: 'HTML e CSS modernos', desc: 'Nada de framework pesado e cheio de dependência: só o essencial, rápido e limpo.' },
+  { name: 'Cloudflare CDN', desc: 'Seu site servido do ponto mais próximo de cada visitante, no Brasil e no mundo.' },
+  { name: 'SEO técnico nativo', desc: 'Dados estruturados, sitemap, metas e canonical configurados em todas as páginas.' },
+  { name: 'Analytics & Search Console', desc: 'Medição de visitas e conversões configurada desde o primeiro dia no ar.' },
+];
+
+const deliverables = [
+  'Arquitetura blindada contra invasões',
+  'Otimização para o Google (SEO técnico)',
+  'Integração com WhatsApp e redes sociais',
+  'Google Analytics e Search Console configurados',
+  'Versão otimizada para celular',
+  'Página de política de privacidade (LGPD)',
+  'Treinamento para usar o site',
+  'Acompanhamento do projeto pelo CRM',
+  'Suporte dedicado por 30 dias',
+];
+
+const steps = [
+  {
+    num: '01',
+    title: 'Briefing e estratégia',
+    desc: 'Uma conversa rápida para entender seu negócio, seu público e seus objetivos. Saímos dela com a estrutura ideal do seu site.',
+    chip: 'Reunião rápida online',
+  },
+  {
+    num: '02',
+    title: 'Design exclusivo',
+    desc: 'Criamos um layout sob medida para a sua marca — e você aprova cada detalhe antes de qualquer linha de código.',
+    chip: 'Você aprova antes de seguir',
+  },
+  {
+    num: '03',
+    title: 'Desenvolvimento',
+    desc: 'Construímos o site com a tecnologia mais moderna do mercado e testamos em celular, tablet e computador.',
+    chip: 'Entrega em até 3 dias úteis',
+  },
+  {
+    num: '04',
+    title: 'Lançamento e evolução',
+    desc: 'Seu site no ar com tudo configurado. E por 30 dias, qualquer ajuste ou dúvida é com a gente.',
+    chip: '30 dias de suporte incluso',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Quanto tempo leva para meu site ficar pronto?',
+    a: 'Entregamos seu site em até 3 dias úteis, dependendo da complexidade e da quantidade de páginas. O prazo exato é confirmado na proposta.',
+  },
+  {
+    q: 'Preciso pagar mensalidade para a WordPane?',
+    a: 'Não. Depois da entrega, você só paga domínio e hospedagem, que custam pouco. Se quiser, dá para contratar um plano de suporte contínuo — mas é totalmente opcional.',
+  },
+  {
+    q: 'Vou conseguir atualizar o conteúdo do site?',
+    a: 'Sim. Montamos o site de um jeito fácil de atualizar e treinamos você e sua equipe para mexer nele sem medo.',
+  },
+  {
+    q: 'Já tenho um site em WordPress. E agora?',
+    a: 'Cuidamos de toda a migração: conteúdo, endereços e redirecionamentos, sem perder posições no Google nem visitantes no caminho.',
+  },
+  {
+    q: 'Meu site vai aparecer no Google?',
+    a: 'Todo site sai do forno com SEO técnico completo: velocidade, estrutura, títulos e descrições otimizados. O ranqueamento também depende de conteúdo e concorrência, mas você já começa na frente.',
+  },
+  {
+    q: 'Quanto custa um site profissional?',
+    a: 'Depende do tamanho do projeto: número de páginas, funcionalidades e integrações. Pede uma proposta gratuita que a gente monta o orçamento certinho para o seu caso.',
+  },
+];
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a,
+    },
+  })),
+};
+---
+
+<Base
+  title="Desenvolvimento de Sites Profissionais de Alta Performance | WordPane"
+  description="Criamos sites profissionais que carregam em menos de 1 segundo, alcançam nota 90+ no PageSpeed e são feitos para converter. Entrega em até 3 dias úteis. Peça uma proposta gratuita."
+  jsonLdExtra={[faqLd]}
+>
+  <Header />
+  <main>
+    <PageHero
+      eyebrow="Desenvolvimento de sites"
+      titleA="Sites que carregam em instantes e"
+      titleB="vendem 24 horas por dia."
+      sub="Design sob medida e a tecnologia mais rápida da web. Seu site abre na hora, aparece no Google e faz o visitante virar cliente."
+      note="Entrega em até 3 dias úteis · Nota 90+ no PageSpeed · Proposta gratuita"
+      ctaMessage="Olá! Quero uma proposta gratuita para desenvolvimento de site."
+      secondaryLabel="Ver comparativo"
+      secondaryHref="#comparativo"
+    >
+      <ReportCard />
+    </PageHero>
+    <TrustBar items={trustItems} />
+    <Pain />
+    <FeatureGrid
+      id="recursos"
+      eyebrow="Recursos e benefícios"
+      titleA="Tudo para seu site"
+      titleB="converter mais"
+      intro="Nada de site pesado e cheio de plugin. Cada recurso abaixo entra por padrão em todos os sites que construímos."
+      features={features}
+    />
+    <Comparison />
+    <TechSection
+      id="tecnologias"
+      eyebrow="Tecnologias"
+      titleA="A stack por trás da"
+      titleB="velocidade"
+      intro="Usamos a mesma tecnologia que as maiores empresas do mundo usam nos próprios sites — sem gambiarra e sem plugin."
+      techs={techs}
+    />
+    <Deliverables
+      eyebrow="Tudo incluso"
+      titleA="O que acompanha"
+      titleB="todo site"
+      intro="Sem taxa surpresa e sem item cobrado por fora: o que está aqui entra em todo site que entregamos, do primeiro ao último."
+      items={deliverables}
+      ctaTitle="Proposta gratuita e sem compromisso"
+      ctaText="Conte o que você precisa e receba uma proposta com escopo, prazo e valor. Grátis e sem compromisso."
+      ctaMessage="Olá! Quero uma proposta gratuita para desenvolvimento de site."
+    />
+    <StepsSection
+      id="processo"
+      eyebrow="Como funciona"
+      titleA="Do primeiro contato ao site no ar em"
+      titleB="até 3 dias úteis"
+      intro="Sem mistério e sem surpresa: você acompanha cada etapa pelo nosso CRM e aprova antes de seguirmos para a próxima."
+      steps={steps}
+    />
+    <Faq faqs={faqs} />
+    <CtaBand
+      title="Pronto para ter um site que vende de verdade?"
+      text="Peça agora uma proposta gratuita e tenha um site que abre na hora, aparece no Google e trabalha por você 24 horas por dia."
+      ctaMessage="Olá! Quero uma proposta gratuita para desenvolvimento de site."
+    />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+</Base>

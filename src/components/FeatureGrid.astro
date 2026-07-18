@@ -1,0 +1,39 @@
+---
+export interface Feature {
+  icon: string;
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  id?: string;
+  eyebrow: string;
+  titleA: string;
+  titleB: string;
+  intro: string;
+  features: Feature[];
+}
+
+const { id, eyebrow, titleA, titleB, intro, features } = Astro.props;
+---
+
+<section id={id}>
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">{eyebrow}</span>
+      <h2>{titleA} <span class="gradient-text">{titleB}</span></h2>
+      <p>{intro}</p>
+    </div>
+    <div class="grid-cards">
+      {features.map((feature) => (
+        <article class="card" data-reveal>
+          <span class="icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={feature.icon} />
+          </span>
+          <h3>{feature.title}</h3>
+          <p>{feature.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

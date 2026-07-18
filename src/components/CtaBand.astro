@@ -1,0 +1,32 @@
+---
+import { waLink } from '../config';
+
+interface Props {
+  title: string;
+  text: string;
+  ctaLabel?: string;
+  ctaMessage?: string;
+}
+
+const {
+  title,
+  text,
+  ctaLabel = 'Solicitar proposta gratuita',
+  ctaMessage,
+} = Astro.props;
+
+const ctaHref = ctaMessage ? waLink(ctaMessage) : waLink('Olá! Quero uma proposta gratuita para um projeto com a WordPane.');
+---
+
+<section>
+  <div class="container">
+    <div class="cta-band" data-reveal>
+      <span class="eyebrow">Vamos construir juntos</span>
+      <h2>{title}</h2>
+      <p>{text}</p>
+      <a class="btn btn-primary" href={ctaHref} target="_blank" rel="noopener">
+        {ctaLabel}
+      </a>
+    </div>
+  </div>
+</section>

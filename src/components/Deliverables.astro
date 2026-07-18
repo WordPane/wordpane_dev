@@ -1,0 +1,62 @@
+---
+import { waLink } from '../config';
+
+interface Props {
+  id?: string;
+  eyebrow: string;
+  titleA: string;
+  titleB: string;
+  intro: string;
+  items: string[];
+  ctaTitle: string;
+  ctaText: string;
+  ctaLabel?: string;
+  ctaMessage?: string;
+}
+
+const {
+  id,
+  eyebrow,
+  titleA,
+  titleB,
+  intro,
+  items,
+  ctaTitle,
+  ctaText,
+  ctaLabel = 'Quero minha proposta',
+  ctaMessage,
+} = Astro.props;
+
+const ctaHref = ctaMessage ? waLink(ctaMessage) : waLink('Olá! Quero uma proposta gratuita para um projeto com a WordPane.');
+---
+
+<section id={id} class="included">
+  <div class="container included-grid">
+    <div data-reveal>
+      <span class="eyebrow">{eyebrow}</span>
+      <h2>{titleA} <span class="gradient-text">{titleB}</span></h2>
+      <p class="included-intro">{intro}</p>
+      <ul class="included-list">
+        {items.map((item) => (
+          <li class="included-item">
+            <span class="icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+            </span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="guarantee-card" data-reveal>
+      <span class="guarantee-chip">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+        Resposta em poucos minutos
+      </span>
+      <h3>{ctaTitle}</h3>
+      <p>{ctaText}</p>
+      <a class="btn" href={ctaHref} target="_blank" rel="noopener">
+        {ctaLabel}
+      </a>
+    </div>
+  </div>
+</section>

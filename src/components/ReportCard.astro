@@ -1,0 +1,69 @@
+<div class="hero-visual" aria-hidden="true">
+  <div class="report-card">
+    <div class="report-header">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="report-url">pagespeed.web.dev · seusite.com.br</span>
+    </div>
+    <div class="report-scores">
+      <div>
+        <div class="score-ring"><strong>100</strong></div>
+        <span>Desempenho</span>
+      </div>
+      <div>
+        <div class="score-ring"><strong>100</strong></div>
+        <span>Acessibilidade</span>
+      </div>
+      <div>
+        <div class="score-ring"><strong>100</strong></div>
+        <span>Práticas recomendadas</span>
+      </div>
+      <div>
+        <div class="score-ring"><strong>100</strong></div>
+        <span>SEO</span>
+      </div>
+    </div>
+  </div>
+  <div class="float-chip chip-1">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+    0,4 s de carregamento
+  </div>
+  <div class="float-chip chip-2">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" /></svg>
+    Sem plugins vulneráveis
+  </div>
+</div>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rings = document.querySelectorAll<HTMLElement>('.score-ring');
+
+  if (rings.length && !reduceMotion) {
+    const DURATION = 1300;
+
+    const animateRing = (ring: HTMLElement, delay: number) => {
+      const num = ring.querySelector('strong');
+      window.setTimeout(() => {
+        const start = performance.now();
+        const tick = (now: number) => {
+          const progress = Math.min((now - start) / DURATION, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(eased * 100);
+          ring.style.background = `conic-gradient(var(--green) ${value}%, rgba(255, 255, 255, 0.08) ${value}%)`;
+          if (num) num.textContent = String(value);
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }, delay);
+    };
+
+    rings.forEach((ring, i) => {
+      ring.style.background =
+        'conic-gradient(var(--green) 0%, rgba(255, 255, 255, 0.08) 0%)';
+      const num = ring.querySelector('strong');
+      if (num) num.textContent = '0';
+      animateRing(ring, 300 + i * 180);
+    });
+  }
+</script>

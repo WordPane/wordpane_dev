@@ -1,0 +1,42 @@
+---
+export interface Step {
+  num: string;
+  title: string;
+  desc: string;
+  chip: string;
+}
+
+interface Props {
+  id?: string;
+  eyebrow: string;
+  titleA: string;
+  titleB: string;
+  intro: string;
+  steps: Step[];
+}
+
+const { id, eyebrow, titleA, titleB, intro, steps } = Astro.props;
+---
+
+<section id={id}>
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">{eyebrow}</span>
+      <h2>{titleA} <span class="gradient-text">{titleB}</span></h2>
+      <p>{intro}</p>
+    </div>
+
+    <ol class="steps">
+      {steps.map((step) => (
+        <li class="step" data-reveal>
+          <span class="step-node">{step.num}</span>
+          <div class="step-body">
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+            <span class="step-chip">{step.chip}</span>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

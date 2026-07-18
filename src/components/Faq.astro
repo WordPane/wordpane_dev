@@ -1,5 +1,11 @@
 ---
-import { faqs } from '../data/faqs';
+import type { Faq as FaqItem } from '../data/faqs';
+
+interface Props {
+  faqs: FaqItem[];
+}
+
+const { faqs } = Astro.props;
 ---
 
 <section id="faq">

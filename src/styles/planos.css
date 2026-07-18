@@ -1,0 +1,187 @@
+/* ============================================
+   Página de planos (/planos/)
+   Usada apenas pela página de planos.
+   ============================================ */
+
+/* ---------- Grade de preços ---------- */
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 60rem;
+  margin-inline: auto;
+  align-items: stretch;
+}
+
+@media (max-width: 52rem) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 30rem;
+  }
+
+  /* Plano em destaque aparece primeiro no mobile */
+  .price-card.featured {
+    order: -1;
+  }
+}
+
+/* ---------- Cartão de plano ---------- */
+
+.price-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(#112332, #112332) padding-box,
+    conic-gradient(
+      from var(--border-angle, 0deg),
+      rgba(255, 255, 255, 0.09) 0%,
+      rgba(255, 255, 255, 0.09) 100%
+    ) border-box;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: 2.25rem 2rem 2rem;
+  transition: transform 0.2s ease;
+}
+
+.price-card:hover {
+  transform: translateY(-3px);
+}
+
+.price-card.featured {
+  background:
+    linear-gradient(#112332, #112332) padding-box,
+    conic-gradient(
+      from var(--border-angle, 0deg),
+      rgba(0, 209, 100, 0.15) 0%,
+      var(--green) 8%,
+      rgba(0, 209, 100, 0.15) 16%
+    ) border-box;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.price-badge {
+  position: absolute;
+  top: -0.85rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.35rem 1rem;
+  background: var(--gradient);
+  color: var(--navy);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.price-card h3 {
+  font-size: 1.35rem;
+}
+
+.price-tag {
+  margin-top: 0.3rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.price-value {
+  margin-block: 1.4rem 1.5rem;
+}
+
+.price-value .amount {
+  display: block;
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.price-value .amount sup {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--green);
+  margin-right: 0.2rem;
+}
+
+.price-value .suffix {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--text-faint);
+  font-size: 0.88rem;
+}
+
+.price-list {
+  display: grid;
+  gap: 0.7rem;
+  margin-bottom: 1.75rem;
+}
+
+.price-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.price-list svg {
+  color: var(--green);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.price-foot {
+  margin-top: auto;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.price-foot .btn {
+  width: 100%;
+}
+
+.price-delivery {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-self: start;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--green);
+  background: rgba(0, 209, 100, 0.08);
+  border: 1px solid rgba(0, 209, 100, 0.3);
+  border-radius: 999px;
+}
+
+.price-delivery svg {
+  flex-shrink: 0;
+}
+
+.price-note {
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  text-align: center;
+}
+
+.pricing-note {
+  max-width: 42rem;
+  margin: 2rem auto 0;
+  text-align: center;
+  color: var(--text-faint);
+  font-size: 0.88rem;
+}
+
+.pricing-note strong {
+  color: var(--text-muted);
+}
+
+/* ---------- CTA final ---------- */
+
+.cta-wrap {
+  max-width: 46rem;
+  margin-inline: auto;
+}

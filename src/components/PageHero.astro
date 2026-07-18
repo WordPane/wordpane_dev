@@ -1,0 +1,53 @@
+---
+import { waLink } from '../config';
+
+interface Props {
+  eyebrow: string;
+  titleA: string;
+  titleB: string;
+  sub: string;
+  note: string;
+  ctaLabel?: string;
+  ctaMessage?: string;
+  secondaryLabel: string;
+  secondaryHref: string;
+}
+
+const {
+  eyebrow,
+  titleA,
+  titleB,
+  sub,
+  note,
+  ctaLabel = 'Solicitar proposta gratuita',
+  ctaMessage,
+  secondaryLabel,
+  secondaryHref,
+} = Astro.props;
+
+const ctaHref = ctaMessage ? waLink(ctaMessage) : waLink('Olá! Quero uma proposta gratuita para um projeto com a WordPane.');
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <span class="eyebrow">{eyebrow}</span>
+      <h1>
+        <span class="line">{titleA}</span> <span class="line gradient-text">{titleB}</span>
+      </h1>
+      <p class="hero-sub">{sub}</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href={ctaHref} target="_blank" rel="noopener">
+          {ctaLabel}
+        </a>
+        <a class="btn btn-outline" href={secondaryHref}>{secondaryLabel}</a>
+      </div>
+      <p class="hero-note">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+        {note}
+      </p>
+    </div>
+
+    <slot />
+  </div>
+</section>

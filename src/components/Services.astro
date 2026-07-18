@@ -1,0 +1,74 @@
+---
+import { waLink } from '../config';
+
+const services = [
+  {
+    icon: '<circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />',
+    title: 'Desenvolvimento de Sites',
+    desc: 'Sites institucionais, landing pages e portfólios que abrem em menos de 1 segundo, aparecem no Google e transformam visita em contato.',
+    items: [
+      'Carregamento abaixo de 1 segundo',
+      'Nota 90+ no Google PageSpeed',
+      'SEO técnico nativo desde o primeiro dia',
+      'Entrega em até 3 dias úteis',
+    ],
+    href: '/desenvolvimento-de-sites/',
+    cta: waLink('Olá! Quero uma proposta gratuita para desenvolvimento de site.'),
+  },
+  {
+    icon: '<rect x="4" y="4" width="16" height="16" rx="2" /><rect x="9" y="9" width="6" height="6" /><line x1="9" y1="1" x2="9" y2="4" /><line x1="15" y1="1" x2="15" y2="4" /><line x1="9" y1="20" x2="9" y2="23" /><line x1="15" y1="20" x2="15" y2="23" /><line x1="20" y1="9" x2="23" y2="9" /><line x1="20" y1="14" x2="23" y2="14" /><line x1="1" y1="9" x2="4" y2="9" /><line x1="1" y1="14" x2="4" y2="14" />',
+    title: 'Desenvolvimento de Sistemas',
+    desc: 'Sistemas web sob medida — ERPs, CRMs, painéis e automações — que organizam sua operação, eliminam tarefas manuais e devolvem tempo para sua equipe.',
+    items: [
+      'Automação de processos manuais',
+      'Painéis e relatórios em tempo real',
+      'Integrações com suas ferramentas',
+      'Segurança, permissões e backup automático',
+    ],
+    href: '/desenvolvimento-de-sistemas/',
+    cta: waLink('Olá! Quero uma proposta gratuita para desenvolvimento de sistema.'),
+  },
+];
+---
+
+<section id="servicos">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Nossos serviços</span>
+      <h2>O que podemos <span class="gradient-text">construir para você</span></h2>
+      <p>
+        Do site que apresenta sua empresa ao sistema que roda sua operação:
+        a mesma tecnologia de ponta, a mesma agilidade e a mesma obsessão
+        por resultado.
+      </p>
+    </div>
+    <div class="services-grid">
+      {services.map((service) => (
+        <article class="card service-card" data-reveal>
+          <span class="icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={service.icon} />
+          </span>
+          <h3>{service.title}</h3>
+          <p>{service.desc}</p>
+          <ul class="service-list">
+            {service.items.map((item) => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div class="service-foot">
+            <a class="btn btn-primary btn-sm" href={service.cta} target="_blank" rel="noopener">
+              Solicitar proposta
+            </a>
+            <a class="service-link" href={service.href}>
+              Ver detalhes
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
