@@ -560,6 +560,16 @@ h3 {
   gap: 1.25rem;
 }
 
+.grid-cards-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 52rem) {
+  .grid-cards-3 {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+}
+
 .card {
   background:
     linear-gradient(#112332, #112332) padding-box,
@@ -1416,6 +1426,16 @@ h3 {
   gap: 1.25rem;
 }
 
+.tech-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 52rem) {
+  .tech-grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+}
+
 .tech-card h3 {
   color: var(--green);
   font-size: 1.05rem;
@@ -1487,13 +1507,13 @@ h3 {
 /* ---------- Hero da home (sem visual, mais alta) ---------- */
 
 .hero-full {
-  padding-top: clamp(11rem, 16vw, 13.5rem);
-  padding-bottom: clamp(7.5rem, 12vw, 10rem);
+  padding-top: clamp(12.5rem, 18vw, 15.5rem);
+  padding-bottom: clamp(8.5rem, 14vw, 11.5rem);
 }
 
 @media (max-width: 30rem) {
   .hero-full {
-    padding-top: 9rem;
-    padding-bottom: 5.5rem;
+    padding-top: 10rem;
+    padding-bottom: 6.5rem;
   }
 }

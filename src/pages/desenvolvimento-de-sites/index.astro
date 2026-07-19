@@ -14,6 +14,7 @@ import CtaBand from '../../components/CtaBand.astro';
 import Faq from '../../components/Faq.astro';
 import Footer from '../../components/Footer.astro';
 import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import { agencyFeatures } from '../../data/agency';
 
 const trustItems = [
   'Entrega em até 3 dias úteis',
@@ -24,6 +25,24 @@ const trustItems = [
   'Sem mensalidade',
   'Acompanhamento pelo CRM',
   'Suporte incluso por 30 dias',
+];
+
+const audience = [
+  {
+    icon: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" />',
+    title: 'Pequenas empresas',
+    desc: 'Site institucional ou landing page profissional para sair do improviso: presença digital séria, investimento acessível e entrega em até 3 dias úteis.',
+  },
+  {
+    icon: '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" />',
+    title: 'Médias empresas',
+    desc: 'Sites com mais páginas, catálogos e integrações com WhatsApp e ferramentas de marketing para gerar demanda todos os dias.',
+  },
+  {
+    icon: '<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" />',
+    title: 'Grandes empresas',
+    desc: 'Portais e sites de alta demanda, com arquitetura que aguenta picos de campanha, SEO técnico avançado e código-fonte 100% seu.',
+  },
 ];
 
 const features = [
@@ -119,6 +138,10 @@ const steps = [
 
 const faqs = [
   {
+    q: 'A WordPane atende empresas de qualquer tamanho?',
+    a: 'Sim. Fazemos sites para pequenas, médias e grandes empresas: da landing page enxuta ao portal de alta demanda. O padrão é o mesmo em todos os projetos: velocidade, segurança e design focado em conversão.',
+  },
+  {
     q: 'Quanto tempo leva para meu site ficar pronto?',
     a: 'Entregamos seu site em até 3 dias úteis, dependendo da complexidade e da quantidade de páginas. O prazo exato é confirmado na proposta.',
   },
@@ -159,8 +182,8 @@ const faqLd = {
 ---
 
 <Base
-  title="Desenvolvimento de Sites Profissionais de Alta Performance | WordPane"
-  description="Criamos sites profissionais que carregam em menos de 1 segundo, alcançam nota 90+ no PageSpeed e são feitos para converter. Entrega em até 3 dias úteis. Peça uma proposta gratuita."
+  title="Agência de Desenvolvimento de Sites Profissionais | WordPane"
+  description="A WordPane é uma agência de desenvolvimento de sites para pequenas, médias e grandes empresas. Sites que carregam em menos de 1 segundo, nota 90+ no PageSpeed e feitos para converter. Peça uma proposta gratuita."
   jsonLdExtra={[faqLd]}
 >
   <Header />
@@ -169,7 +192,7 @@ const faqLd = {
       eyebrow="Desenvolvimento de sites"
       titleA="Sites que carregam em instantes e"
       titleB="vendem 24 horas por dia."
-      sub="Design sob medida e a tecnologia mais rápida da web. Seu site abre na hora, aparece no Google e faz o visitante virar cliente."
+      sub="A WordPane é uma agência de desenvolvimento de sites para pequenas, médias e grandes empresas. Design sob medida e a tecnologia mais rápida da web: seu site abre na hora, aparece no Google e faz o visitante virar cliente."
       note="Entrega em até 3 dias úteis · Nota 90+ no PageSpeed · Proposta gratuita"
       ctaMessage="Olá! Quero uma proposta gratuita para desenvolvimento de site."
       secondaryLabel="Ver comparativo"
@@ -180,14 +203,32 @@ const faqLd = {
     <TrustBar items={trustItems} />
     <Pain />
     <FeatureGrid
+      id="agencia"
+      eyebrow="A agência"
+      titleA="Mais que uma fornecedora,"
+      titleB="uma parceira de tecnologia"
+      intro="A WordPane é uma agência de desenvolvimento web feita de gente que constrói: time enxuto, processo transparente e obsessão por resultado — do primeiro site ao portal de grande operação."
+      features={agencyFeatures}
+      cols={3}
+    />
+    <FeatureGrid
       id="recursos"
-      eyebrow="Recursos e benefícios"
+      eyebrow="Nossa solução"
       titleA="Tudo para seu site"
       titleB="converter mais"
-      intro="Nada de site pesado e cheio de plugin. Cada recurso abaixo entra por padrão em todos os sites que construímos."
+      intro="Nada de site pesado e cheio de plugin. Cada recurso abaixo entra por padrão em todos os sites que construímos — do site institucional ao portal de grande operação."
       features={features}
     />
     <Comparison />
+    <FeatureGrid
+      id="para-quem"
+      eyebrow="Para quem fazemos"
+      titleA="Sites para empresas"
+      titleB="de todos os tamanhos"
+      intro="Da landing page enxuta ao portal de alta demanda: o mesmo padrão de qualidade, na medida de cada momento da sua empresa."
+      features={audience}
+      cols={3}
+    />
     <TechSection
       id="tecnologias"
       eyebrow="Tecnologias"
@@ -195,6 +236,7 @@ const faqLd = {
       titleB="velocidade"
       intro="Usamos a mesma tecnologia que as maiores empresas do mundo usam nos próprios sites — sem gambiarra e sem plugin."
       techs={techs}
+      cols={3}
     />
     <Deliverables
       eyebrow="Tudo incluso"

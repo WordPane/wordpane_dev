@@ -9,6 +9,10 @@ export const faqs: Faq[] = [
     a: 'Sim. Trabalhamos em duas frentes: desenvolvimento de sites profissionais de alta performance e desenvolvimento de sistemas web sob medida, como ERPs, CRMs, painéis e automações. Nas duas, o padrão é o mesmo: tecnologia moderna, agilidade e foco em conversão.',
   },
   {
+    q: 'A WordPane atende empresas de qualquer tamanho?',
+    a: 'Sim, atendemos pequenas, médias e grandes empresas. Para as pequenas, sites profissionais e sistemas enxutos com entrega rápida e investimento acessível; para as médias, automações e integrações que organizam a operação; para as grandes, projetos robustos com arquitetura escalável, segurança e código-fonte 100% seu.',
+  },
+  {
     q: 'Quanto tempo leva para meu projeto ficar pronto?',
     a: 'Sites são entregues em até 3 dias úteis, dependendo da complexidade. Sistemas sob medida variam conforme o escopo, mas trabalhamos com entregas parciais frequentes — você começa a usar as primeiras funcionalidades em semanas, não meses.',
   },

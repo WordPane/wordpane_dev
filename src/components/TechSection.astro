@@ -11,9 +11,10 @@ interface Props {
   titleB: string;
   intro: string;
   techs: Tech[];
+  cols?: 3;
 }
 
-const { id, eyebrow, titleA, titleB, intro, techs } = Astro.props;
+const { id, eyebrow, titleA, titleB, intro, techs, cols } = Astro.props;
 ---
 
 <section id={id} class="tech">
@@ -23,7 +24,7 @@ const { id, eyebrow, titleA, titleB, intro, techs } = Astro.props;
       <h2>{titleA} <span class="gradient-text">{titleB}</span></h2>
       <p>{intro}</p>
     </div>
-    <div class="tech-grid">
+    <div class:list={['tech-grid', { 'tech-grid-3': cols === 3 }]}>
       {techs.map((tech) => (
         <article class="card tech-card" data-reveal>
           <h3>{tech.name}</h3>

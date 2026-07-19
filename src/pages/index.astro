@@ -12,47 +12,34 @@ import Faq from '../components/Faq.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import { faqs } from '../data/faqs';
+import { agencyFeatures } from '../data/agency';
 
-const features = [
+const trustItems = [
+  'Sites em até 3 dias úteis',
+  'Sistemas web sob medida',
+  'Pequenas, médias e grandes empresas',
+  'Nota 90+ no PageSpeed',
+  'Acompanhamento pelo CRM',
+  'Atendimento em minutos',
+  'Código 100% seu',
+  'Suporte dedicado',
+];
+
+const audience = [
   {
-    icon: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />',
-    title: 'Agilidade de verdade',
-    desc: 'Sites entregues em até 3 dias úteis e sistemas com entregas parciais frequentes. Seu projeto não fica meses no forno.',
-  },
-  {
-    icon: '<circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />',
-    title: 'Velocidade extrema',
-    desc: 'Páginas que abrem em menos de 1 segundo e sistemas que respondem na hora. Velocidade vira conversão e produtividade.',
-  },
-  {
-    icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" />',
-    title: 'Segurança de ponta a ponta',
-    desc: 'Sem plugins vulneráveis, com criptografia, controle de acesso e backup automático. Seus dados e sua reputação protegidos.',
-  },
-  {
-    icon: '<rect x="3" y="3" width="18" height="18" rx="2" /><line x1="3" y1="9" x2="21" y2="9" /><line x1="9" y1="21" x2="9" y2="9" />',
-    title: 'Transparência total',
-    desc: 'Você acompanha propostas, etapas e entregas pelo nosso CRM. Nada de projeto em caixa-preta.',
-  },
-  {
-    icon: '<circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" />',
-    title: 'Foco em conversão',
-    desc: 'Cada página e cada tela são desenhadas para guiar o visitante até a ação: contato, orçamento ou compra.',
-  },
-  {
-    icon: '<polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />',
-    title: 'Código 100% seu',
-    desc: 'Você recebe o código-fonte completo e documentado. Sem aprisionamento, sem dependência da gente para evoluir.',
-  },
-  {
-    icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>',
-    title: 'Atendimento próximo',
-    desc: 'Fala direto com quem constrói, sem robô e sem fila. Resposta em poucos minutos, do briefing ao pós-lançamento.',
+    icon: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" />',
+    title: 'Pequenas empresas',
+    desc: 'Sites profissionais e sistemas enxutos para profissionalizar a presença digital e organizar a rotina — com investimento acessível e entrega rápida.',
   },
   {
     icon: '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" />',
-    title: 'Pronto para crescer',
-    desc: 'Arquitetura que aguenta picos de tráfego e novas funcionalidades sem precisar recomeçar do zero.',
+    title: 'Médias empresas',
+    desc: 'Sistemas web que automatizam processos, integram suas ferramentas e dão visibilidade à operação para crescer sem travar a equipe.',
+  },
+  {
+    icon: '<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" />',
+    title: 'Grandes empresas',
+    desc: 'Projetos robustos com arquitetura escalável, permissões, integrações complexas e segurança — e o código-fonte sempre na sua mão.',
   },
 ];
 
@@ -109,29 +96,38 @@ const faqLd = {
 ---
 
 <Base
-  title="WordPane — Desenvolvimento de Sites e Sistemas sob Medida"
-  description="A WordPane desenvolve sites ultrarrápidos e sistemas web sob medida. Tecnologia moderna, entrega ágil, segurança e acompanhamento pelo CRM. Peça uma proposta gratuita."
+  title="WordPane — Agência de Desenvolvimento de Sites e Sistemas Web"
+  description="A WordPane é uma agência de desenvolvimento de sites e sistemas web sob medida para pequenas, médias e grandes empresas. Tecnologia moderna, entrega ágil e acompanhamento pelo CRM. Peça uma proposta gratuita."
   jsonLdExtra={[faqLd]}
 >
   <Header />
   <main>
     <Hero />
-    <TrustBar />
+    <TrustBar items={trustItems} />
+    <FeatureGrid
+      id="agencia"
+      eyebrow="A agência"
+      titleA="Mais que uma fornecedora,"
+      titleB="uma parceira de tecnologia"
+      intro="A WordPane é uma agência de desenvolvimento web feita de gente que constrói: time enxuto, processo transparente e obsessão por resultado — do primeiro site ao sistema que sustenta toda a sua operação."
+      features={agencyFeatures}
+      cols={3}
+    />
     <Services />
     <FeatureGrid
-      id="vantagens"
-      eyebrow="Por que a WordPane"
-      titleA="O que você ganha ao"
-      titleB="trabalhar com a gente"
-      intro="Não entregamos só código: entregamos velocidade, segurança e transparência do primeiro contato ao pós-lançamento."
-      features={features}
+      id="para-quem"
+      eyebrow="Para quem fazemos"
+      titleA="Soluções para empresas"
+      titleB="de todos os tamanhos"
+      intro="Do site que apresenta a empresa que está começando ao sistema web que sustenta grandes operações: o mesmo padrão de qualidade, na medida de cada momento."
+      features={audience}
     />
     <TechSection
       id="tecnologias"
       eyebrow="Tecnologias"
       titleA="A mesma tecnologia das"
       titleB="maiores empresas do mundo"
-      intro="Escolhemos ferramentas modernas e consolidadas para entregar projetos rápidos, seguros e baratos de manter."
+      intro="Escolhemos ferramentas modernas e consolidadas para entregar projetos rápidos, seguros e baratos de manter — do site institucional ao sistema de missão crítica."
       techs={techs}
     />
     <StepsSection
@@ -145,7 +141,7 @@ const faqLd = {
     <Faq faqs={faqs} />
     <CtaBand
       title="Pronto para tirar seu projeto do papel?"
-      text="Conte sua ideia no WhatsApp e receba uma proposta gratuita com escopo, prazo e valor — sem compromisso."
+      text="Do site ao sistema web: conte sua ideia no WhatsApp e receba uma proposta gratuita com escopo, prazo e valor — sem compromisso."
     />
   </main>
   <Footer />

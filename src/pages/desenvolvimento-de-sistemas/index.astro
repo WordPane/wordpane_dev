@@ -11,6 +11,7 @@ import CtaBand from '../../components/CtaBand.astro';
 import Faq from '../../components/Faq.astro';
 import Footer from '../../components/Footer.astro';
 import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import { agencyFeatures } from '../../data/agency';
 
 const trustItems = [
   'Código 100% seu',
@@ -21,6 +22,24 @@ const trustItems = [
   'Integrações via API',
   'Suporte pós-entrega',
   'Escopo fechado, sem surpresa',
+];
+
+const audience = [
+  {
+    icon: '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" />',
+    title: 'Pequenas empresas',
+    desc: 'Sistemas enxutos para organizar a rotina — cadastros, pedidos, financeiro — sem planilha solta e sem investimento de grande corporação.',
+  },
+  {
+    icon: '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" />',
+    title: 'Médias empresas',
+    desc: 'Automação de processos, integrações com suas ferramentas e painéis em tempo real para sustentar o crescimento sem travar a equipe.',
+  },
+  {
+    icon: '<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" /><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" /><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" /><path d="M10 6h4" /><path d="M10 10h4" /><path d="M10 14h4" /><path d="M10 18h4" />',
+    title: 'Grandes empresas',
+    desc: 'Sistemas robustos com permissões, integrações complexas e arquitetura escalável — e o código-fonte sempre na sua mão.',
+  },
 ];
 
 const features = [
@@ -118,6 +137,10 @@ const steps = [
 
 const faqs = [
   {
+    q: 'A WordPane atende empresas de qualquer tamanho?',
+    a: 'Sim. Desenvolvemos sistemas para pequenas, médias e grandes empresas: do sistema enxuto que organiza a rotina ao projeto robusto com integrações complexas. Sempre com escopo fechado por escrito e código-fonte 100% seu.',
+  },
+  {
     q: 'Quanto custa um sistema sob medida?',
     a: 'Depende do escopo: módulos, integrações e número de usuários. Depois da conversa de descoberta, você recebe uma proposta gratuita com escopo, prazo e valor fechados — sem surpresa no meio do caminho.',
   },
@@ -158,8 +181,8 @@ const faqLd = {
 ---
 
 <Base
-  title="Desenvolvimento de Sistemas Web sob Medida | WordPane"
-  description="Desenvolvemos sistemas web sob medida: ERPs, CRMs, painéis e automações com segurança, integrações e dados em tempo real. Código 100% seu. Peça uma proposta gratuita."
+  title="Agência de Desenvolvimento de Sistemas Web sob Medida | WordPane"
+  description="A WordPane é uma agência de desenvolvimento de sistemas web para pequenas, médias e grandes empresas: ERPs, CRMs, painéis e automações com segurança e dados em tempo real. Peça uma proposta gratuita."
   jsonLdExtra={[faqLd]}
 >
   <Header />
@@ -168,7 +191,7 @@ const faqLd = {
       eyebrow="Desenvolvimento de sistemas"
       titleA="Sistemas web sob medida que"
       titleB="automatizam sua operação."
-      sub="Chega de planilha solta e processo manual. Centralizamos seus dados, automatizamos rotinas e entregamos painéis em tempo real — com agilidade e segurança."
+      sub="A WordPane é uma agência de desenvolvimento de sistemas web para pequenas, médias e grandes empresas. Chega de planilha solta e processo manual: centralizamos dados, automatizamos rotinas e entregamos painéis em tempo real."
       note="Escopo fechado antes de começar · Código 100% seu · Proposta gratuita"
       ctaMessage="Olá! Quero uma proposta gratuita para desenvolvimento de sistema."
       secondaryLabel="Ver tecnologias"
@@ -230,12 +253,30 @@ const faqLd = {
     </PageHero>
     <TrustBar items={trustItems} />
     <FeatureGrid
+      id="agencia"
+      eyebrow="A agência"
+      titleA="Mais que uma fornecedora,"
+      titleB="uma parceira de tecnologia"
+      intro="A WordPane é uma agência de desenvolvimento web feita de gente que constrói: time enxuto, processo transparente e obsessão por resultado — do sistema enxuto ao projeto de grande porte."
+      features={agencyFeatures}
+      cols={3}
+    />
+    <FeatureGrid
       id="recursos"
-      eyebrow="Recursos e benefícios"
+      eyebrow="Nossa solução"
       titleA="O que seu sistema"
       titleB="entrega no dia a dia"
-      intro="Cada sistema é desenhado para a sua operação — mas estes recursos são padrão em tudo o que construímos."
+      intro="Cada sistema é desenhado para a sua operação — mas estes recursos são padrão em tudo o que construímos, do sistema enxuto ao projeto de grande porte."
       features={features}
+    />
+    <FeatureGrid
+      id="para-quem"
+      eyebrow="Para quem fazemos"
+      titleA="Sistemas para empresas"
+      titleB="de todos os tamanhos"
+      intro="Do sistema enxuto que organiza a rotina ao projeto robusto de grande operação: o mesmo padrão de qualidade, na medida de cada momento da sua empresa."
+      features={audience}
+      cols={3}
     />
     <TechSection
       id="tecnologias"
