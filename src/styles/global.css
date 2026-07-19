@@ -1342,6 +1342,69 @@ h3 {
   }
 }
 
+/* ---------- Header: menu mobile ---------- */
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.nav-toggle .icon-close {
+  display: none;
+}
+
+.nav-toggle[aria-expanded="true"] .icon-open {
+  display: none;
+}
+
+.nav-toggle[aria-expanded="true"] .icon-close {
+  display: block;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 52rem) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .mobile-nav {
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem 1.25rem 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .mobile-nav.open {
+    display: flex;
+  }
+
+  .mobile-nav a:not(.btn) {
+    padding: 0.7rem 0.25rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+
+  .mobile-nav a:not(.btn):hover {
+    color: var(--green);
+  }
+
+  .mobile-nav .mobile-nav-crm {
+    margin-top: 0.6rem;
+    padding: 0.75rem 1.3rem;
+    font-size: 0.95rem;
+  }
+}
+
 /* ---------- Serviços (home) ---------- */
 
 .services-grid {

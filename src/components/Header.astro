@@ -16,12 +16,26 @@ import { CRM_LINK } from '../config';
       <a href="/#faq">Dúvidas</a>
     </nav>
     <div class="header-actions">
-      <a class="btn btn-outline btn-sm btn-crm" href={CRM_LINK} target="_blank" rel="noopener">
+      <a class="btn btn-primary btn-sm btn-crm" href={CRM_LINK} target="_blank" rel="noopener">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
         <span>Acesso ao CRM</span>
       </a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav">
+        <svg class="icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
+        <svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18" /><line x1="18" y1="6" x2="6" y2="18" /></svg>
+      </button>
     </div>
   </div>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Menu móvel">
+    <a href="/desenvolvimento-de-sites/">Sites</a>
+    <a href="/desenvolvimento-de-sistemas/">Sistemas</a>
+    <a href="/#processo">Processo</a>
+    <a href="/#faq">Dúvidas</a>
+    <a class="btn btn-primary mobile-nav-crm" href={CRM_LINK} target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+      <span>Acesso ao CRM</span>
+    </a>
+  </nav>
 </header>
 
 <script>
@@ -29,4 +43,21 @@ import { CRM_LINK } from '../config';
   const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 12);
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
+
+  const navToggle = document.querySelector('.nav-toggle');
+  const mobileNav = document.querySelector('.mobile-nav');
+
+  const setMenu = (open: boolean) => {
+    mobileNav?.classList.toggle('open', open);
+    navToggle?.setAttribute('aria-expanded', String(open));
+    navToggle?.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  };
+
+  navToggle?.addEventListener('click', () => {
+    setMenu(!mobileNav?.classList.contains('open'));
+  });
+
+  mobileNav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => setMenu(false));
+  });
 </script>
