@@ -1,0 +1,522 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import logoWhite from '../../assets/brand/logo-white.png';
+import { EMAIL, SITE_NAME, SITE_URL, WHATSAPP_LINK, WHATSAPP_NUMBER } from '../../config';
+import '../../styles/planos.css';
+import '../../styles/agencia.css';
+
+const wa = (msg: string) =>
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+
+const createPlans = [
+  {
+    name: 'Site Landing Page',
+    tag: 'Uma página que vende pelo seu cliente',
+    price: '297,00',
+    suffix: 'pagamento único',
+    badge: null,
+    featured: false,
+    delivery: 'Entrega em 1 a 3 dias úteis',
+    cta: 'Pedir Landing Page',
+    link: wa('Olá! Sou agência e quero contratar o plano Site Landing Page (R$ 297,00).'),
+    items: [
+      'Página única, completa e profissional',
+      'Design sob medida com a identidade do seu cliente',
+      'Estrutura focada em conversão — ideal para anúncios e campanhas',
+      'Botão de WhatsApp e formulário de contato',
+      'Site 100% responsivo',
+      'SEO técnico nativo para o Google',
+      'Certificado SSL (HTTPS)',
+      'Nota 90+ no PageSpeed e carga abaixo de 1 segundo',
+    ],
+  },
+  {
+    name: 'Site Multipage',
+    tag: 'Site completo para o seu cliente, pronto para crescer',
+    price: '397,00',
+    suffix: 'pagamento único',
+    badge: 'Mais completo',
+    featured: true,
+    delivery: 'Entrega em 1 a 3 dias úteis',
+    cta: 'Pedir Multipage',
+    link: wa('Olá! Sou agência e quero contratar o plano Site Multipage (R$ 397,00).'),
+    items: [
+      'Tudo do plano Landing Page',
+      'Até 6 páginas: Início, Sobre, Serviços, Portfólio, Blog, Contato…',
+      'Página de serviços detalhada',
+      'Mais páginas ranqueando no Google',
+      'Navegação completa para apresentar a empresa do seu cliente',
+      'Pronto para crescer: novas páginas por R$ 37',
+    ],
+  },
+];
+
+const carePlans = [
+  {
+    name: 'Atualização ou nova página',
+    tag: 'Serviço avulso, sem burocracia',
+    price: '37,00',
+    suffix: 'por solicitação',
+    badge: null,
+    featured: false,
+    note: 'Para sites criados pela WordPane.',
+    cta: 'Solicitar atualização',
+    link: wa('Olá! Sou agência e quero contratar o serviço de atualização ou adição de página (R$ 37,00).'),
+    items: [
+      'Atualização de conteúdo em uma página existente, ou',
+      'Criação de uma nova página em um site já desenvolvido pela WordPane',
+      'Mesmo padrão visual e de performance do site original',
+      'Publicação rápida',
+    ],
+  },
+  {
+    name: 'Pacote Agência',
+    tag: 'Os sites dos seus clientes evoluindo todo mês',
+    price: '197,00',
+    suffix: 'por mês',
+    badge: 'Feito para agências',
+    featured: true,
+    note: null,
+    cta: 'Assinar Pacote Agência',
+    link: wa('Olá! Sou agência e quero contratar o Pacote Agência de manutenção (R$ 197,00/mês).'),
+    items: [
+      'Até 10 novas páginas por mês em sites já desenvolvidos pela WordPane',
+      'Até 30 atualizações por mês nas páginas atuais',
+      'Ajustes de textos, imagens, seções e links',
+      'Válido para a carteira de clientes da sua agência',
+      'Suporte prioritário no WhatsApp',
+      'Economia real: 10 páginas avulsas custariam R$ 370',
+    ],
+  },
+];
+
+const pains = [
+  {
+    title: 'Demanda maior que o time',
+    desc: 'Sua agência vende, mas o time não dá conta de produzir? A gente absorve a demanda extra sem você precisar contratar.',
+    icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />',
+  },
+  {
+    title: 'Custo fixo de desenvolvedor',
+    desc: 'Contratar dev custa caro e pesa no fluxo de caixa. Aqui você paga por projeto, com preço fechado e previsível.',
+    icon: '<line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />',
+  },
+  {
+    title: 'Prazo que trava a venda',
+    desc: 'Cliente quer o site para ontem. Entregamos em 1 a 3 dias úteis — você fecha mais contratos e entrega antes do concorrente.',
+    icon: '<circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />',
+  },
+  {
+    title: 'Freelancer que some',
+    desc: 'Nada de parceiro que desaparece no meio do projeto. Processo profissional, prazo definido e suporte contínuo.',
+    icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" />',
+  },
+];
+
+const steps = [
+  {
+    num: '1',
+    title: 'Você envia o briefing',
+    desc: 'Manda no WhatsApp o material do seu cliente: logo, textos, referências. Se faltar algo, a gente te ajuda a organizar.',
+    chip: 'Em minutos',
+  },
+  {
+    num: '2',
+    title: 'Nós desenvolvemos',
+    desc: 'Nosso framework próprio monta o site com design sob medida, performance extrema e SEO nativo.',
+    chip: '1 a 3 dias úteis',
+  },
+  {
+    num: '3',
+    title: 'Você entrega com a sua marca',
+    desc: 'Recebe o site pronto, apresenta ao seu cliente como trabalho da sua agência e fica com a margem.',
+    chip: 'White label',
+  },
+];
+
+const differentials = [
+  {
+    title: 'Entrega em 1 a 3 dias',
+    desc: 'Do briefing ao ar em até 3 dias úteis. Sua agência promete prazos que nenhum concorrente consegue cumprir.',
+    icon: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />',
+  },
+  {
+    title: 'White label total',
+    desc: 'Trabalhamos nos bastidores: o site sai com a sua marca e o seu cliente nem sabe que existimos.',
+    icon: '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><line x1="2" y1="2" x2="22" y2="22" />',
+  },
+  {
+    title: 'Preço fechado, margem sua',
+    desc: 'Você sabe exatamente quanto custa cada site e define o preço final para o seu cliente. A margem é toda da agência.',
+    icon: '<line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />',
+  },
+  {
+    title: 'Performance que impressiona',
+    desc: 'Sites com nota 90+ no PageSpeed e carga abaixo de 1 segundo: um argumento de venda a mais para a sua agência.',
+    icon: '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" />',
+  },
+  {
+    title: 'Sem risco técnico',
+    desc: 'Sem plugins vulneráveis e sem banco de dados exposto: menos dor de cabeça com site invadido ou fora do ar.',
+    icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" />',
+  },
+  {
+    title: 'Parceiro, não fornecedor',
+    desc: 'Atendimento direto no WhatsApp, resposta em poucos minutos e prioridade para quem tem carteira de clientes.',
+    icon: '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />',
+  },
+];
+
+const faqs = [
+  {
+    q: 'O que é o modelo white label?',
+    a: 'Nós desenvolvemos o site nos bastidores e sua agência entrega como trabalho próprio. Não temos nenhum contato com o seu cliente e nossa marca não aparece em lugar nenhum.',
+  },
+  {
+    q: 'O prazo de 1 a 3 dias úteis é real?',
+    a: 'Sim. Nosso framework próprio elimina a parte repetitiva do desenvolvimento, então conseguimos entregar sites completos em 1 a 3 dias úteis após o recebimento do briefing completo.',
+  },
+  {
+    q: 'Posso cobrar do meu cliente o valor que quiser?',
+    a: 'Pode. Nosso preço para a agência é fechado e fixo; o preço final para o seu cliente é definido por você. A margem é 100% da sua agência.',
+  },
+  {
+    q: 'Como funciona o Pacote Agência de R$ 197/mês?',
+    a: 'Você pode solicitar até 10 novas páginas por mês e até 30 atualizações nas páginas atuais. Vale para sites já desenvolvidos pela WordPane — as novas páginas são adições a esses projetos, não projetos novos.',
+  },
+  {
+    q: 'E se o site for de outro desenvolvedor?',
+    a: 'Os serviços de manutenção e novas páginas são exclusivos para sites criados com o nosso framework. Se o site do seu cliente for de outra origem, podemos recriá-lo em um dos planos de criação.',
+  },
+  {
+    q: 'Existe fidelidade ou contrato longo?',
+    a: 'Não. Os planos de criação são pagamento único e o Pacote Agência é mensal, sem fidelidade: você cancela quando quiser.',
+  },
+];
+
+const year = new Date().getFullYear();
+const pagespeedUrl = `https://pagespeed.web.dev/analysis?url=${SITE_URL}`;
+---
+
+<Base
+  title="Para Agências — Desenvolvimento de Sites White Label em 1 a 3 dias | WordPane"
+  description="Parceiro white label para agências: sites entregues em 1 a 3 dias úteis, preço fechado a partir de R$ 297 e pacote de manutenção de R$ 197/mês com até 10 novas páginas e 30 atualizações."
+  noindex={true}
+>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/" aria-label="WordPane — voltar ao início">
+        <Image src={logoWhite} alt="WordPane" width={500} format="webp" loading="eager" />
+      </a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a href="#planos">Planos</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#manutencao">Manutenção</a>
+        <a href="#faq">Dúvidas</a>
+      </nav>
+      <a class="btn btn-primary btn-sm" href={WHATSAPP_LINK} target="_blank" rel="noopener">
+        Ser parceiro
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner" data-reveal>
+          <span class="eyebrow">Para agências</span>
+          <h1>
+            <span class="line">Sua agência entregando sites</span>
+            <span class="line gradient-text">em 1 a 3 dias úteis.</span>
+          </h1>
+          <p class="hero-sub">
+            Somos o braço de desenvolvimento da sua agência: white label, preço
+            fechado e entrega rápida. Você vende com a sua marca, nós
+            construímos nos bastidores — e a margem fica com você.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#planos">Ver planos para agências</a>
+            <a class="btn btn-outline" href={WHATSAPP_LINK} target="_blank" rel="noopener">
+              Falar no WhatsApp
+            </a>
+          </div>
+          <p class="hero-note">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+            Resposta em poucos minutos · White label · Sem fidelidade
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="parceiro">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">O problema</span>
+          <h2>Sua agência vende. <span class="gradient-text">Quem entrega?</span></h2>
+          <p>
+            Se alguma dessas situações trava o crescimento da sua agência,
+            a WordPane foi feita para você.
+          </p>
+        </div>
+        <div class="grid-cards">
+          {pains.map((p) => (
+            <article class="card" data-reveal>
+              <span class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={p.icon} />
+              </span>
+              <h3>{p.title}</h3>
+              <p>{p.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="included">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Como funciona</span>
+          <h2>Do briefing à entrega <span class="gradient-text">em 3 passos</span></h2>
+          <p>
+            Processo simples e rápido: sua agência foca em vender e atender,
+            a gente cuida da produção.
+          </p>
+        </div>
+        <ol class="steps steps-3">
+          {steps.map((step) => (
+            <li class="step" data-reveal>
+              <span class="step-node">{step.num}</span>
+              <div class="step-body">
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+                <span class="step-chip">{step.chip}</span>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section id="planos">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Criação de site</span>
+          <h2>Preço fechado para você <span class="gradient-text">lucrar na revenda</span></h2>
+          <p>
+            Dois formatos, um único padrão: sites rápidos, seguros e
+            otimizados. Pagamento único — você define o preço final para o seu cliente.
+          </p>
+        </div>
+        <div class="pricing-grid">
+          {createPlans.map((plan) => (
+            <article class:list={['price-card', { featured: plan.featured }]} data-reveal>
+              {plan.badge && <span class="price-badge">{plan.badge}</span>}
+              <h3>{plan.name}</h3>
+              <p class="price-tag">{plan.tag}</p>
+              <div class="price-value">
+                <span class:list={['amount', { 'gradient-text': plan.featured }]}>
+                  <sup>R$</sup> {plan.price}
+                </span>
+                <span class="suffix">{plan.suffix}</span>
+              </div>
+              <ul class="price-list">
+                {plan.items.map((item) => (
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div class="price-foot">
+                <span class="price-delivery">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+                  {plan.delivery}
+                </span>
+                <a class:list={['btn', plan.featured ? 'btn-primary' : 'btn-outline']} href={plan.link} target="_blank" rel="noopener">
+                  {plan.cta}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p class="pricing-note" data-reveal>
+          Domínio e hospedagem não inclusos — custos recorrentes de
+          responsabilidade do cliente final. <strong>Garantia WordPane:</strong> se o
+          site não atingir nota 90+ no Google PageSpeed, refazemos a otimização
+          sem custo adicional.
+        </p>
+      </div>
+    </section>
+
+    <section id="manutencao" class="included">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Depois do ar</span>
+          <h2>A carteira dos seus clientes <span class="gradient-text">sempre atualizada</span></h2>
+          <p>
+            Novas páginas e atualizações para os sites que desenvolvemos,
+            com volume pensado para quem atende vários clientes.
+          </p>
+        </div>
+        <div class="pricing-grid">
+          {carePlans.map((plan) => (
+            <article class:list={['price-card', { featured: plan.featured }]} data-reveal>
+              {plan.badge && <span class="price-badge">{plan.badge}</span>}
+              <h3>{plan.name}</h3>
+              <p class="price-tag">{plan.tag}</p>
+              <div class="price-value">
+                <span class:list={['amount', { 'gradient-text': plan.featured }]}>
+                  <sup>R$</sup> {plan.price}
+                </span>
+                <span class="suffix">{plan.suffix}</span>
+              </div>
+              <ul class="price-list">
+                {plan.items.map((item) => (
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div class="price-foot">
+                {plan.note && <span class="price-note">{plan.note}</span>}
+                <a class:list={['btn', plan.featured ? 'btn-primary' : 'btn-outline']} href={plan.link} target="_blank" rel="noopener">
+                  {plan.cta}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p class="pricing-note" data-reveal>
+          <strong>Importante:</strong> as novas páginas do Pacote Agência são
+          adições a projetos já desenvolvidos com o nosso framework — não
+          incluem a criação de projetos novos. Sites novos entram pelos
+          planos de criação acima.
+        </p>
+      </div>
+    </section>
+
+    <section id="diferenciais">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Diferenciais</span>
+          <h2>Por que agências <span class="gradient-text">nos escolhem</span></h2>
+          <p>
+            Mais que um fornecedor de sites: um parceiro de produção que
+            protege sua margem, seu prazo e sua reputação.
+          </p>
+        </div>
+        <div class="grid-cards grid-cards-3">
+          {differentials.map((d) => (
+            <article class="card" data-reveal>
+              <span class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={d.icon} />
+              </span>
+              <h3>{d.title}</h3>
+              <p>{d.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="included">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Dúvidas frequentes</span>
+          <h2>Perguntas e <span class="gradient-text">respostas</span></h2>
+        </div>
+        <div class="faq-list">
+          {faqs.map((faq) => (
+            <details data-reveal>
+              <summary>{faq.q}</summary>
+              <p>{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-wrap" data-reveal>
+          <div class="guarantee-card">
+            <span class="guarantee-chip">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+              Sem compromisso
+            </span>
+            <h3>Pronto para escalar as entregas da sua agência?</h3>
+            <p>
+              Chame no WhatsApp, conte como sua agência trabalha e receba uma
+              proposta de parceria em poucos minutos.
+            </p>
+            <a class="btn" href={WHATSAPP_LINK} target="_blank" rel="noopener">
+              Quero ser parceiro
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <Image src={logoWhite} alt="WordPane" width={440} format="webp" />
+          <p>Braço de desenvolvimento white label para agências.</p>
+          <p>Atendemos agências em todo o Brasil.</p>
+          <a class="footer-badge" id="pagespeed-badge" href={pagespeedUrl} target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+            Este site é nossa vitrine: teste nossa velocidade
+          </a>
+        </div>
+        <nav class="footer-nav" aria-label="Rodapé">
+          <div>
+            <strong>Navegação</strong>
+            <ul>
+              <li><a href="#planos">Planos</a></li>
+              <li><a href="#diferenciais">Diferenciais</a></li>
+              <li><a href="#manutencao">Manutenção</a></li>
+              <li><a href="/">Voltar ao site</a></li>
+            </ul>
+          </div>
+          <div>
+            <strong>Contato</strong>
+            <ul>
+              <li>
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener">WhatsApp</a>
+              </li>
+              <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
+              <li><span>Seg. a sex., 9h às 18h</span></li>
+              <li><span>Resposta em poucos minutos</span></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© {year} {SITE_NAME}. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <WhatsAppFloat />
+</Base>
+
+<script>
+  const header = document.querySelector('.site-header');
+  const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 12);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const pagespeedBadge = document.getElementById('pagespeed-badge');
+  if (pagespeedBadge) {
+    pagespeedBadge.setAttribute(
+      'href',
+      `https://pagespeed.web.dev/analysis?url=${window.location.origin}`
+    );
+  }
+</script>

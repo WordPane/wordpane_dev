@@ -1,0 +1,31 @@
+/* ============================================
+   Página de agências (/agencia/)
+   Ajustes específicos sobre o global.css.
+   ============================================ */
+
+/* ---------- Timeline com 3 passos ---------- */
+
+/* Grade de 3 colunas centralizada na seção */
+.steps.steps-3 {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 62rem;
+  margin-inline: auto;
+}
+
+/* Linha vai exatamente do centro do primeiro nó ao centro do último */
+.steps.steps-3::before {
+  left: 16.67%;
+  right: 16.67%;
+}
+
+@media (max-width: 52rem) {
+  .steps.steps-3 {
+    grid-template-columns: 1fr;
+    max-width: 26rem;
+  }
+
+  .steps.steps-3::before {
+    left: 1.75rem;
+    right: auto;
+  }
+}
