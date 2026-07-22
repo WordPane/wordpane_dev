@@ -196,14 +196,79 @@ const faqs = [
   },
 ];
 
+const jsonLdExtra = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Desenvolvimento de sites white label para agências',
+    description:
+      'Criação de sites profissionais para agências revenderem com a própria marca: entrega em 1 a 3 dias úteis, preço fechado e pacote mensal de manutenção com novas páginas e atualizações.',
+    provider: {
+      '@type': 'ProfessionalService',
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    areaServed: 'BR',
+    audience: {
+      '@type': 'Audience',
+      audienceType: 'Agências de marketing, publicidade e comunicação',
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Planos para agências',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          name: 'Site Landing Page',
+          price: '297.00',
+          priceCurrency: 'BRL',
+        },
+        {
+          '@type': 'Offer',
+          name: 'Site Multipage',
+          price: '397.00',
+          priceCurrency: 'BRL',
+        },
+        {
+          '@type': 'Offer',
+          name: 'Pacote Agência — manutenção mensal',
+          description:
+            'Até 10 novas páginas por mês em sites já desenvolvidos pela WordPane e até 30 atualizações mensais nas páginas atuais.',
+          price: '197.00',
+          priceCurrency: 'BRL',
+        },
+      ],
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Início', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Para agências', item: `${SITE_URL}/agencia/` },
+    ],
+  },
+];
+
 const year = new Date().getFullYear();
 const pagespeedUrl = `https://pagespeed.web.dev/analysis?url=${SITE_URL}`;
 ---
 
 <Base
-  title="Para Agências — Desenvolvimento de Sites White Label em 1 a 3 dias | WordPane"
-  description="Parceiro white label para agências: sites entregues em 1 a 3 dias úteis, preço fechado a partir de R$ 297 e pacote de manutenção de R$ 197/mês com até 10 novas páginas e 30 atualizações."
-  noindex={true}
+  title="Sites para Agências: White Label em 1 a 3 Dias | WordPane"
+  description="White label para agências: sites profissionais em 1 a 3 dias úteis a partir de R$ 297. Manutenção com 10 páginas novas e 30 atualizações por R$ 197/mês."
+  image="/og-agencia.png"
+  imageAlt="WordPane para agências — sua agência entregando sites em 1 a 3 dias úteis"
+  jsonLdExtra={jsonLdExtra}
 >
   <header class="site-header">
     <div class="container">
